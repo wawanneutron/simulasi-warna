@@ -1,0 +1,488 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="shortcut icon" type="image/x-icon" href="http://www.binadidaya.com/res/images/Penta_icon.ico">
+<title>Penta Prima | Virtual Painter</title>
+<link rel="stylesheet" href="Penta%20Prima%20_%20Virtual%20Painter_files/style.css" type="text/css">
+<script type="text/javascript" src="Penta%20Prima%20_%20Virtual%20Painter_files/script.js"></script>
+<script type="text/javascript" src="Penta%20Prima%20_%20Virtual%20Painter_files/fading_script.js"></script>
+
+
+<script>
+	/* Fungsi untuk mengganti Warna pada preview 
+	function changeColor(color, title_color) {
+		document.getElementById('preview').style.backgroundColor = color;
+		document.getElementById('title').innerHTML = title_color;
+	} */
+	
+	/* Fungsi test  */
+	function test() {
+		alert("HELL YEAH!!!");
+	}
+	
+	/* Fungsi untuk mencari suatu warna berdasarkan dengan ID tertentu.
+	 * Hasil dari fungsi ini berupa kode suatu warna.
+	 */
+	function searchColor(tagID) {
+		var val = document.getElementById(tagID).value;
+		return val;
+	}
+	
+	/* Fungsi untuk input data dengan enter. */
+	function searchKeyPress(e, tagID, txtBox, minLength) {
+        // look for window.event in case event isn't passed in
+        if (typeof e == 'undefined' && window.event) { 
+			e = window.event; 
+		}
+		// keyCode untuk tombol 'ENTER' adalah 13
+        if (e.keyCode == 13) {
+            var pjg_data = txtBox.value.length;
+            // Jika panjang data kurang dari 4 maka tidak diproses.
+            if (pjg_data >= minLength) {
+				// tombol enter akan men-trigger fungsi onClick
+				document.getElementById(tagID).click();
+			} else {
+				alert("Data minimal " + minLength + " karakter");
+			}
+        }
+    }
+
+/* Fungsi untuk reset Color Object. */
+function resetColor() {
+		changeColorKiri('#faf7f2');
+		changeColor('#faf7f2');
+		changeColorAtas('#faf7f2');
+	}
+
+/* ================= Ubah Preview Color ========================== */
+	
+	/* Fungsi untuk mengganti Warna Preview Color pada Object Kiri */
+	function previewColorKiri(color, nama, kode) {
+		document.getElementById('focus_color_kiri').style.backgroundColor = color;
+		document.getElementById('nama_color_kiri').innerHTML = nama;
+		document.getElementById('kode_color_kiri').innerHTML = kode;
+	}
+	
+	/* Fungsi untuk mengganti Warna Preview Color pada Object Atap */
+	function previewColorAtap(color, nama, kode) {
+		document.getElementById('focus_color_atap').style.backgroundColor = color;
+		document.getElementById('nama_color_atap').innerHTML = nama;
+		document.getElementById('kode_color_atap').innerHTML = kode;
+	}
+	
+	/* Fungsi untuk mengganti Warna Preview Color pada Object Atap */
+	function previewColorKanan(color, nama, kode) {
+		document.getElementById('focus_color_kanan').style.backgroundColor = color;
+		document.getElementById('nama_color_kanan').innerHTML = nama;
+		document.getElementById('kode_color_kanan').innerHTML = kode;
+	}
+	
+/* ================= End of Ubah Preview Color ====================== */
+
+	/* Fungsi Test2 untuk ambil value dari combobox dan menampilkan pada Dialog Alert */
+	function returnValue(element) {
+		var option_user_selection = element.options[element.selectedIndex].text;
+		if (option_user_selection == 'ParagonPremium') {
+			//fade('img_paragon_prem');
+			document.getElementById('img_paragon').style.display='none';	
+			document.getElementById('img_paragon_prem').style.display='block';	
+		} else if (option_user_selection == 'Paragon') {
+			//fade('img_paragon');
+			document.getElementById('img_paragon').style.display='block';	
+			document.getElementById('img_paragon_prem').style.display='none';	
+		}
+		
+		return option_user_selection;
+	}
+	
+	/* Fungsi untuk mengganti Warna Background pada tag <SELECT> */
+	function changeBG(color) {
+		document.getElementById('select').style.backgroundColor = color;
+		document.getElementById('select').style.color = 'white';
+	}
+
+	/* Fungsi untuk membuat border pada suatu tag dengan ID tertentu  */
+	function changeBorder(tagId) {
+		document.getElementById(tagId).style.border = '5px red solid';
+	}
+
+	/* Fungsi untuk membuat visible-invisible pada form Tambah Warna */
+	function visible(isVisible) {
+		if (isVisible == 'TRUE') {
+			document.getElementById('add_form').style.display='block';	
+			document.getElementById('add_btn').style.display='none';
+			document.getElementById('batal_btn').style.display='block';
+		} else if (isVisible == 'FALSE') {
+			document.getElementById('add_form').style.display='none';
+			document.getElementById('batal_btn').style.display='none';
+			document.getElementById('add_btn').style.display='block';
+		}
+		
+	}
+
+	// create the XMLHttpRequest object, according browser
+	function get_XmlHttp() {
+	  // create the variable that will contain the instance of the XMLHttpRequest object (initially with null value)
+	  var xmlHttp = null;
+
+	  if(window.XMLHttpRequest) {		// for Forefox, IE7+, Opera, Safari, ...
+	    xmlHttp = new XMLHttpRequest();
+	  }
+	  else if(window.ActiveXObject) {	// for Internet Explorer 5 or 6
+	    xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+	  }
+
+	  return xmlHttp;
+	}
+
+	// sends data to a php file, via POST, and displays the received answer
+	function ajaxrequest(php_file, tagID, idColor) {
+	  var request = get_XmlHttp();		// call the function for the XMLHttpRequest instance
+
+	  // create pairs index=value with data that must be sent to server
+	  var  the_data = 'data=' + idColor; //document.getElementById('txt2').innerHTML;
+
+	  request.open("POST", php_file, true);			// set the request
+
+	  // adds  a header to tell the PHP script to recognize the data as is sent via POST
+	  request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	  request.send(the_data);		// calls the send() method with datas as parameter
+
+	  // Check request status
+	  // If the response is received completely, will be transferred to the HTML tag with tagID
+	  request.onreadystatechange = function() {
+	    if (request.readyState == 4) {
+	      document.getElementById(tagID).innerHTML = request.responseText;
+	    }
+	  }
+	}
+</script>
+<style>
+
+	.color_container {
+		width:450px;
+		height:150px;
+		overflow:auto;
+	}
+	
+	.color_preview {
+		background-color:white;
+		height:280px;
+		width:380px;
+		border:1px gray solid;
+	}
+	
+	.color_select {
+		border:1px #f2f2f2 solid;
+		height:50px;
+		width:50px;
+		float:left;
+	}
+	
+	div.color_selector {
+		/*bakcground-color:#bde3a6;*/
+		background-color:#faf7f2; 
+		padding:10px 10px 10px 10px; 
+		width:443px; 
+		margin-bottom:15px; 
+		height:230px;
+		border:2px #e2e2e2 solid;
+	}
+	
+	div.nomor_obyek {
+		float:left; 
+		margin-right:10px; 
+		height:auto;
+	}
+.style1 {
+	font-size: 36px;
+	color: #0000FF;
+	font-weight: bold;
+}
+.style2 {font-size: 18px}
+.style4 {color: #FF6666}
+body {
+	background-color: #FFFFCC;
+}
+.style5 {
+	font-size: 18px;
+	color: #666666;
+	font-weight: bold;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+.style6 {color: #666666}
+.style8 {color: #666666; font-family: Georgia, "Times New Roman", Times, serif; }
+.style9 {
+	color: #FF3333;
+	font-weight: bold;
+	font-size: 14px;
+}
+</style>
+</head>
+<body onload="browser_detector();">
+<div style="float:left;">
+	<h1 class='style8'>SIMULASI PENGECATAN KAMAR TIDUR</h1>
+	<div id="title"> </div>
+	<div style="float:left;" class="podbar" id="rumah">
+		<div class="painted_object"><img src="Penta%20Prima%20_%20Virtual%20Painter_files/room2.png"></div>
+		<div class="painted_object"><img id="pic_lantai" src="Penta%20Prima%20_%20Virtual%20Painter_files/lantai.htm"></div>
+		<div class="painted_object"><img id="pic_kanan" src="Penta%20Prima%20_%20Virtual%20Painter_files/dinding_kanan4.png" onload="getPixelsKanan(this)"></div>
+
+<div style="margin-top:400px;"> </div>
+	</div>
+	
+	<div style="float:right; z-index:1; position:absolute; left:700px; bottom:0px; top:70px; border:2px">
+	  <div style="margin-bottom:5px; color:#faf7f2;  background-repeat: no-repeat; background-position: left center; ">
+			<label class="title">&nbsp; &nbsp; &nbsp;
+<!--			<div align="left"><span class="style5">Simulasi Warna - Kamar Tidur </span></div>   -->
+			<span class="style8">
+			</label>
+  	  </span><span class="style6">	        </span>
+	  </div>
+
+	  <!-- ######### Pilih Warna Kanan ########3 -->
+		<div class="color_selector">
+			<div class="nomor_obyek style1 style2 style4">PILIHAN WARNA</div>
+			<div>
+				<div id="result_kanan">
+		<div>
+			<table style="width:500px;" cellpadding="0" cellspacing="0">
+			<tbody><tr><td width="50%">
+				<div id="content_color">
+					<div id="focus_color_kanan" class="preview_color"></div>
+					<div id="nama_color_kanan" class="font16"></div>
+					<div id="kode_color_kanan"></div>
+				</div>
+				</td>
+				<td>
+					<div style="padding-bottom:10px;"><br>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody><tr>
+																<td>&nbsp;</td>
+																<td>&nbsp;<div id="btn_cari_kanan" class="button_orange btn_cari" onclick="ajaxrequest('color_search_kanan_D.php', 'search_result_kanan', searchColor('cari_kanan'));">Cari</div></td>
+							</tr>
+						</tbody></table>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div id="search_result_kanan">
+						
+					</div>
+				</td>
+			</tr>
+			</tbody></table>
+		</div>
+		<div class="color_container">	
+			<div class="color_select" style="background-color:rgb(237,202,194);" onclick="changeColor('237202194'); previewColorKanan('rgb(237,202,194)', 'Peach Dust', '7705-P353');" title="Peach Dust"></div>
+  			<div class="color_select" style="background-color:rgb(219,200,222);" onclick="changeColor('219200222'); previewColorKanan('rgb(219,200,222)', 'Vintage Violet', '7705-41013');" title="Vintage Violet"></div>
+  			<div class="color_select" style="background-color:rgb(240,206,222);" onclick="changeColor('240206222'); previewColorKanan('rgb(240,206,222)', 'Frosted', '7705-30039');" title="Frosted"></div>
+  			<div class="color_select" style="background-color:rgb(220,135,175);" onclick="changeColor('220135175'); previewColorKanan('rgb(220,135,175)', 'Exotic Pink', '7705-34063');" title="Exotic Pink"></div>
+  			<div class="color_select" style="background-color:rgb(179,75,77);" onclick="changeColor('179075077'); previewColorKanan('rgb(179,75,77)', 'Bright Red', '7705-33040');" title="Bright Red"></div>
+  			<div class="color_select" style="background-color:rgb(197,66,67);" onclick="changeColor('197066067'); previewColorKanan('rgb(197,66,67)', 'Sunrise', '7705-46005');" title="Sunrise"></div>
+  			<div class="color_select" style="background-color:rgb(166,65,72);" onclick="changeColor('166065072'); previewColorKanan('rgb(166,65,72)', 'Drum Beat', '7705-37071');" title="Drum Beat"></div>
+  			<div class="color_select" style="background-color:rgb(246,212,183);" onclick="changeColor('246212183'); previewColorKanan('rgb(246,212,183)', 'Peach', '7705-31000');" title="Peach"></div>
+  			<div class="color_select" style="background-color:rgb(237,206,162);" onclick="changeColor('237206162'); previewColorKanan('rgb(237,206,162)', 'Golden Apricot', '7705-11007');" title="Golden Apricot"></div>
+  			<div class="color_select" style="background-color:rgb(247,204,138);" onclick="changeColor('247204138'); previewColorKanan('rgb(247,204,138)', 'Pale Orange', '7705-20012');" title="Pale Orange"></div>
+  			<div class="color_select" style="background-color:rgb(229,161,120);" onclick="changeColor('247204138'); previewColorKanan('rgb(247,204,138)', 'Istambul', '7705-33004');" title="Istambul"></div>
+  			<div class="color_select" style="background-color:rgb(222,146,96);" onclick="changeColor('222146096)'); previewColorKanan('rgb(222,146,96)', 'Orange Yellow', '7705-34002');" title="Orange Yellow"></div>
+  			<div class="color_select" style="background-color:rgb(232,140,81);" onclick="changeColor('232140081'); previewColorKanan('rgb(232,140,81)', 'Tangerine', '7705-23044');" title="Tangerine"></div>
+  			<div class="color_select" style="background-color:rgb(206,181,161);" onclick="changeColor('206181161'); previewColorKanan('rgb(206,181,161)', 'Peach Pink', '7705-P324');" title="Peach Pink"></div>
+  			<div class="color_select" style="background-color:rgb(234,210,129);" onclick="changeColor('234210129'); previewColorKanan('rgb(234,210,129)', 'Honey Moon', '7705-11195');" title="Honey Moon"></div>
+  			<div class="color_select" style="background-color:rgb(241,229,209);" onclick="changeColor('241229209'); previewColorKanan('rgb(241,229,209)', 'Vanilla Puccino', '7705-10204');" title="Vanilla Puccino"></div>
+  			<div class="color_select" style="background-color:rgb(245,227,201);" onclick="changeColor('245227201'); previewColorKanan('rgb(245,227,201)', 'Currier Cream', '7705-10012');" title="Currier Cream"></div>
+  			<div class="color_select" style="background-color:rgb(243,223,205);" onclick="changeColor('243223205'); previewColorKanan('rgb(243,223,205)', 'Candy Yellow', '7705-30001');" title="Candy Yellow"></div>
+  			<div class="color_select" style="background-color:rgb(220,158,148);" onclick="changeColor('220158148'); previewColorKanan('rgb(220,158,148)', 'Wild Rose', '7705-42001');" title="Wild Rose"></div>
+  			<div class="color_select" style="background-color:rgb(236,224,194);" onclick="changeColor('236224194'); previewColorKanan('rgb(236,224,194)', 'Rose White', '7705-P304');" title="Rose White"></div>
+  			<div class="color_select" style="background-color:rgb(242,232,200);" onclick="changeColor('242232200'); previewColorKanan('rgb(242,232,200)', 'Lily White', '7705-P306');" title="Lily White"></div>
+  			<div class="color_select" style="background-color:rgb(248,239,204);" onclick="changeColor('248239204'); previewColorKanan('rgb(248,239,204)', 'Spring Sun', '7705-10205');" title="Spring Sun"></div>
+  			<div class="color_select" style="background-color:rgb(243,220,95);" onclick="changeColor('243220095'); previewColorKanan('rgb(243,220,95)', 'True Yellow', '7705-14063');" title="True Yellow"></div>
+  			<div class="color_select" style="background-color:rgb(244,219,130);" onclick="changeColor('244219130'); previewColorKanan('rgb(244,219,130)', 'Ray of Light', '7705-12106');" title="Ray of Light"></div>
+  			<div class="color_select" style="background-color:rgb(248,212,100);" onclick="changeColor('248212100'); previewColorKanan('rgb(248,212,100)', 'Canary Yellow', '7705-25002');" title="Canary Yellow"></div>
+			<div class="color_select" style="background-color:rgb(222,219,207);" onclick="changeColor('222219207'); previewColorKanan('rgb(222,219,207)', 'Snow Drop', '7705-70032');" title="Snow Drop"></div>
+			<div class="color_select" style="background-color:rgb(205,227,164);" onclick="changeColor('205227164'); previewColorKanan('rgb(205,227,164)', 'Windsurfer', '7705-61060');" title="Windsurfer"></div>
+			<div class="color_select" style="background-color:rgb(178,217,132);" onclick="changeColor('178217132'); previewColorKanan('rgb(178,217,132)', 'Leapfrog', '7705-62094');" title="Leapfrog"></div>
+			<div class="color_select" style="background-color:rgb(166,219,143);" onclick="changeColor('166219143'); previewColorKanan('rgb(166,219,143)', 'Brite Green', '7705-62025');" title="Brite Green"></div>
+			<div class="color_select" style="background-color:rgb(120,167,86);" onclick="changeColor('120167086'); previewColorKanan('rgb(120,167,86)', 'Sweet Celery', '7705-63114');" title="Sweet Celery"></div>
+			<div class="color_select" style="background-color:rgb(38,159,90);" onclick="changeColor('098159090'); previewColorKanan('rgb(38,159,90)', 'Emerald Isle', '7705-64097');" title="Emerald Isle"></div>
+  			<div class="color_select" style="background-color:rgb(243,239,219);" onclick="changeColor('243239219'); previewColorKanan('rgb(243,239,219)', 'Blue Bell White', '7705-90184');" title="Blue Bell White"></div>
+  			<div class="color_select" style="background-color:rgb(199,170,50);" onclick="changeColor('199170050'); previewColorKanan('rgb(199,170,50)', 'Angel Fern', '7705');" title="Angel Fern"></div>
+  			<div class="color_select" style="background-color:rgb(156,138,61);" onclick="changeColor('156138061'); previewColorKanan('rgb(156,138,61)', 'Triple Olive', '7705-64091');" title="Triple Olive"></div>
+  			<div class="color_select" style="background-color:rgb(157,190,108);" onclick="changeColor('157190108'); previewColorKanan('rgb(157,190,108)', 'Tropicana', '7705-62093');" title="Tropicana"></div>
+  			<div class="color_select" style="background-color:rgb(99,166,122);" onclick="changeColor('099166122'); previewColorKanan('rgb(99,166,122)', 'Jade', '7705-64000');" title="Jade"></div>
+  			<div class="color_select" style="background-color:rgb(55,126,113);" onclick="changeColor('055126113'); previewColorKanan('rgb(55,126,113)', 'Dark Green', '7705-65021');" title="Dark Green"></div>
+  			<div class="color_select" style="background-color:rgb(240,216,167);" onclick="changeColor('240216167'); previewColorKanan('rgb(240,216,167)', 'L House Point', '7705-20001');" title="L House Point"></div>
+  			<div class="color_select" style="background-color:rgb(220,200,157);" onclick="changeColor('220200157'); previewColorKanan('rgb(220,200,157)', 'Antique White', '7705-P332');" title="Antique White"></div>
+  			<div class="color_select" style="background-color:rgb(213,196,167);" onclick="changeColor('213196167'); previewColorKanan('rgb(213,196,167)', 'Malacca', '7705-12105');" title="Malacca"></div>
+  			<div class="color_select" style="background-color:rgb(196,170,126);" onclick="changeColor('196170126'); previewColorKanan('rgb(196,170,126)', 'Cream', '7705-P382');" title="Cream"></div>
+  			<div class="color_select" style="background-color:rgb(175,140,95);" onclick="changeColor('175140095'); previewColorKanan('rgb(175,140,95)', 'Western Beige', '7705-83023');" title="Western Beige"></div>
+  			<div class="color_select" style="background-color:rgb(170,117,80);" onclick="changeColor('170117080'); previewColorKanan('rgb(170,117,80)', 'Chelsea', '7705-84050');" title="Chelsea"></div>
+  			<div class="color_select" style="background-color:rgb(231,235,236);" onclick="changeColor('231235236'); previewColorKanan('rgb(231,235,236)', 'Metro White', '7705-P300');" title="Metro White"></div>
+  			<div class="color_select" style="background-color:rgb(234,230,223);" onclick="changeColor('234230223'); previewColorKanan('rgb(234,230,223)', 'Seashell', '7705-10206');" title="Seashell"></div>
+  			<div class="color_select" style="background-color:rgb(218,214,206);" onclick="changeColor('218214206'); previewColorKanan('rgb(218,214,206)', 'Lakestone 153', '7705-70103');" title="Lakestone 153"></div>
+  			<div class="color_select" style="background-color:rgb(218,208,216);" onclick="changeColor('218208216'); previewColorKanan('rgb(218,208,216)', 'Rose Garden', '7705-40011');" title="Rose Garden"></div>
+  			<div class="color_select" style="background-color:rgb(181,167,210);" onclick="changeColor('181167210'); previewColorKanan('rgb(181,167,210)', 'Night Magic', '7705-42009');" title="Night Magic"></div>
+  			<div class="color_select" style="background-color:rgb(130,102,148);" onclick="changeColor('130102148'); previewColorKanan('rgb(130,102,148)', 'Antique', '7705-47001');" title="Antique"></div>
+  			<div class="color_select" style="background-color:rgb(209,213,215);" onclick="changeColor('209213215'); previewColorKanan('rgb(209,213,215)', 'Horizon Grey', '7705-70102');" title="Horizon Grey"></div>
+  			<div class="color_select" style="background-color:rgb(208,210,210);" onclick="changeColor('208210210'); previewColorKanan('rgb(208,210,210)', 'Ash Marine', '7705-71069');" title="Ash Marine"></div>
+  			<div class="color_select" style="background-color:rgb(184,187,187);" onclick="changeColor('184187187'); previewColorKanan('rgb(184,187,187)', 'Frost Grey', '7705-71112');" title="Frost Grey"></div>
+			<div class="color_select" style="background-color:rgb(180,181,178);" onclick="changeColor('180181178'); previewColorKanan('rgb(180,181,178)', 'Ubud', '7705-71063');" title="Ubud"></div>
+			<div class="color_select" style="background-color:rgb(144,142,139);" onclick="changeColor('144142139'); previewColorKanan('rgb(144,142,139)', 'Candi', '7705-73024');" title="Candi"></div>
+			<div class="color_select" style="background-color:rgb(93,97,101);" onclick="changeColor('093097101'); previewColorKanan('rgb(93,97,101)', 'Sand Dark Grey', '7705-77019');" title="Sand Dark Grey"></div>
+			<div class="color_select" style="background-color:rgb(191,204,222);" onclick="changeColor('191204222'); previewColorKanan('rgb(191,204,222)', 'Igloo', '7705-50016');" title="Igloo"></div>
+			<div class="color_select" style="background-color:rgb(191,209,213);" onclick="changeColor('191209213'); previewColorKanan('rgb(191,209,213)', 'Cerulean Blue', '7705-51050');" title="Cerulean Blue"></div>
+			<div class="color_select" style="background-color:rgb(198,217,227);" onclick="changeColor('198217227'); previewColorKanan('rgb(198,217,227)', 'Oxy Blue 1', '7705-50056');" title="Oxy Blue 1"></div>
+			<div class="color_select" style="background-color:rgb(146,198,227);" onclick="changeColor('146198227'); previewColorKanan('rgb(146,198,227)', 'Delft China', '7705-51051');" title="Delft China"></div>
+			<div class="color_select" style="background-color:rgb(76,149,196);" onclick="changeColor('076149196'); previewColorKanan('rgb(76,149,196)', 'Bunaken Blue', '7705-53013');" title="Bunaken Blue"></div>
+			<div class="color_select" style="background-color:rgb(137,151,185);" onclick="changeColor('137151185'); previewColorKanan('rgb(137,151,185)', 'Cloud Blue', '7705-52002');" title="Cloud Blue"></div>
+			<div class="color_select" style="background-color:rgb(51,93,167);" onclick="changeColor('051093167'); previewColorKanan('rgb(51,93,167)', 'Kingdom', '7705-55058');" title="Kingdom"></div>
+
+  		</div>
+  </div>
+			</div>
+		</div>
+		
+		<div style="background-color:#FFFFCC; padding:10px 10px 10px 10px; width:452px; font:normal 9pt arial;">
+			<label style="color:white; font-size:14px;">
+			<div align="center"><img src="Penta Prima _ Virtual Painter_files/Pentalex.png" width="300" height="300" /></div>
+			</label>
+			<p><strong>PENTALEX (7700 - SERI)<br />
+            </strong><em>Acrylic Emulsion Paint for Interior &amp; Exterior</em><br />
+            <br />
+Cat tembok yang terbuat dari bahan dasar resin acrylic dasar air,   pigment, dan additive-additive pilihan, tidak berbau, mudah diaplikasi,   dan cepat kering. Lapisan keringnya tidak mudah retak, daya lekatnya   sangat baik dan tidak mudah luntur bila terkena air, menjadikan cat ini   bisa digunakan untuk pelindung permukaan dinding bagian dalam maupun   luar ruangan. </p>
+<br/>
+<p>* Warna-warna mendekati warna aslinya, cahaya dan bentuk permukaan mempengaruhi hasil akhir. </p>
+
+	  </div>
+ 
+ </div>
+
+
+<script type="text/javascript">
+	// Fungsi untuk mengubah warna dari warna asli ke warna RGB.
+			/*function HexToRGB(Hex) {
+				var Long = parseInt(Hex.replace(/^#/, ""), 16);
+				return {
+					R: (Long >>> 16) & 0xff,
+					G: (Long >>> 8) & 0xff,
+					B: Long & 0xff
+				};
+			}*/
+			
+			function HexToRGB(Hex) {
+				/*var Long = parseInt(Hex.replace(/^#/, ""), 16);*/
+				return {
+					R: parseInt(Hex.substring(0,3),10),
+					G: parseInt(Hex.substring(3,6),10),
+					B: parseInt(Hex.substring(6,9),10)
+				};
+			}			
+			
+	// ###################### Image KANAN #########################		
+			var objek = document.getElementById("pic_kanan");
+			var canvas = document.createElement("canvas");
+			var ctx = canvas.getContext("2d");
+			var originalPixels = null;
+			var currentPixels = null;
+			
+			function changeColor(selectedColor) {
+				if(!originalPixels) return; // Check if image has loaded
+				var newColor = HexToRGB(selectedColor);
+				
+				for(var I = 0, L = originalPixels.data.length; I < L; I += 4) {
+					if(currentPixels.data[I + 3] > 0) {
+						currentPixels.data[I] = originalPixels.data[I] / 255 * newColor.R;
+						currentPixels.data[I + 1] = originalPixels.data[I + 1] / 255 * newColor.G;
+						currentPixels.data[I + 2] = originalPixels.data[I + 2] / 255 * newColor.B;
+					}
+				}
+				
+				ctx.putImageData(currentPixels, 0, 0);
+				objek.src = canvas.toDataURL("image/png");
+			}
+			
+			function getPixelsKanan(img) {
+				canvas.width = img.width;
+				canvas.height = img.height;
+				
+				ctx.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, img.width, img.height);
+				originalPixels = ctx.getImageData(0, 0, img.width, img.height);
+				currentPixels = ctx.getImageData(0, 0, img.width, img.height);
+				
+				img.onload = null;
+			}
+			
+	// ###################### Image KIRI #########################
+			var objekKiri = document.getElementById("pic_kiri");
+			var canvasKiri = document.createElement("canvas");
+			var ctxKiri = canvasKiri.getContext("2d");
+			var originalPixelsKiri = null;
+			var currentPixelsKiri = null;
+			
+			function changeColorKiri(selectedColor) {
+				if(!originalPixelsKiri) return; // Check if image has loaded
+				var newColor = HexToRGB(selectedColor);
+				
+				for(var I = 0, L = originalPixelsKiri.data.length; I < L; I += 4) {
+					if(currentPixelsKiri.data[I + 3] > 0) {
+						currentPixelsKiri.data[I] = originalPixelsKiri.data[I] / 255 * newColor.R;
+						currentPixelsKiri.data[I + 1] = originalPixelsKiri.data[I + 1] / 255 * newColor.G;
+						currentPixelsKiri.data[I + 2] = originalPixelsKiri.data[I + 2] / 255 * newColor.B;
+					}
+				}
+				
+				ctxKiri.putImageData(currentPixelsKiri, 0, 0);
+				objekKiri.src = canvasKiri.toDataURL("image/png");
+			}
+			
+			function getPixelsKiri(img) {
+				canvasKiri.width = img.width;
+				canvasKiri.height = img.height;
+				
+				ctxKiri.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, img.width, img.height);
+				originalPixelsKiri = ctxKiri.getImageData(0, 0, img.width, img.height);
+				currentPixelsKiri = ctxKiri.getImageData(0, 0, img.width, img.height);
+				
+				img.onload = null;
+			}
+			
+	// ###################### Image ATAS #########################
+			var objekAtas = document.getElementById("pic_atap");
+			var canvasAtas = document.createElement("canvas");
+			var ctxAtas = canvasAtas.getContext("2d");
+			var originalPixelsAtas = null;
+			var currentPixelsAtas = null;
+			
+			function changeColorAtas(selectedColor) {
+				if(!originalPixelsAtas) return; // Check if image has loaded
+				var newColor = HexToRGB(selectedColor);
+				
+				for(var I = 0, L = originalPixelsAtas.data.length; I < L; I += 4) {
+					if(currentPixelsAtas.data[I + 3] > 0) {
+						currentPixelsAtas.data[I] = originalPixelsAtas.data[I] / 255 * newColor.R;
+						currentPixelsAtas.data[I + 1] = originalPixelsAtas.data[I + 1] / 255 * newColor.G;
+						currentPixelsAtas.data[I + 2] = originalPixelsAtas.data[I + 2] / 255 * newColor.B;
+					}
+				}
+				
+				ctxAtas.putImageData(currentPixelsAtas, 0, 0);
+				objekAtas.src = canvasAtas.toDataURL("image/png");
+			}
+			
+			function getPixelsAtas(img) {
+				canvasAtas.width = img.width;
+				canvasAtas.height = img.height;
+				
+				ctxAtas.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, img.width, img.height);
+				originalPixelsAtas = ctxAtas.getImageData(0, 0, img.width, img.height);
+				currentPixelsAtas = ctxAtas.getImageData(0, 0, img.width, img.height);
+				
+				img.onload = null;
+			}
+</script>
+
+  
+</div>
+<p>&nbsp;</p>
+</body></html>
