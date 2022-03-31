@@ -7,11 +7,11 @@
 	<link rel="shortcut icon" type="image/x-icon" href="http://www.binadidaya.com/res/images/Penta_icon.ico">
 	<title>Penta Prima | Virtual Painter</title>
 	<link rel="stylesheet" href="virtual_painter_file/style.css" type="text/css">
-	<script type="text/javascript" src="virtual_painter_file/script.js"></script>
-	<script type="text/javascript" src="virtual_painter_file/fading_script.js"></script>
+	<!-- <script type="text/javascript" src="virtual_painter_file/script.js"></script>
+	<script type="text/javascript" src="virtual_painter_file/fading_script.js"></script> -->
 
 
-	<script>
+	<!-- <script>
 		/* Fungsi untuk mengganti Warna pada preview 
 	function changeColor(color, title_color) {
 		document.getElementById('preview').style.backgroundColor = color;
@@ -158,7 +158,8 @@
 				}
 			}
 		}
-	</script>
+	</script> -->
+
 	<style>
 		.color_container {
 			width: 450px;
@@ -304,6 +305,7 @@
 								</tbody>
 							</table>
 						</div>
+						<!-- color palet -->
 						<div class="color_container">
 							<div class="color_select" style="background-color:rgb(237,202,194);"
 								onclick="changeColor('237202194'); previewColorKanan('rgb(237,202,194)', 'Peach Dust', '7705-P353');"
@@ -571,72 +573,72 @@
 			}
 
 			// ###################### Image KIRI #########################
-			var objekKiri = document.getElementById("pic_kiri");
-			var canvasKiri = document.createElement("canvas");
-			var ctxKiri = canvasKiri.getContext("2d");
-			var originalPixelsKiri = null;
-			var currentPixelsKiri = null;
+			// var objekKiri = document.getElementById("pic_kiri");
+			// var canvasKiri = document.createElement("canvas");
+			// var ctxKiri = canvasKiri.getContext("2d");
+			// var originalPixelsKiri = null;
+			// var currentPixelsKiri = null;
 
-			function changeColorKiri(selectedColor) {
-				if (!originalPixelsKiri) return; // Check if image has loaded
-				var newColor = HexToRGB(selectedColor);
+			// function changeColorKiri(selectedColor) {
+			// 	if (!originalPixelsKiri) return; // Check if image has loaded
+			// 	var newColor = HexToRGB(selectedColor);
 
-				for (var I = 0, L = originalPixelsKiri.data.length; I < L; I += 4) {
-					if (currentPixelsKiri.data[I + 3] > 0) {
-						currentPixelsKiri.data[I] = originalPixelsKiri.data[I] / 255 * newColor.R;
-						currentPixelsKiri.data[I + 1] = originalPixelsKiri.data[I + 1] / 255 * newColor.G;
-						currentPixelsKiri.data[I + 2] = originalPixelsKiri.data[I + 2] / 255 * newColor.B;
-					}
-				}
+			// 	for (var I = 0, L = originalPixelsKiri.data.length; I < L; I += 4) {
+			// 		if (currentPixelsKiri.data[I + 3] > 0) {
+			// 			currentPixelsKiri.data[I] = originalPixelsKiri.data[I] / 255 * newColor.R;
+			// 			currentPixelsKiri.data[I + 1] = originalPixelsKiri.data[I + 1] / 255 * newColor.G;
+			// 			currentPixelsKiri.data[I + 2] = originalPixelsKiri.data[I + 2] / 255 * newColor.B;
+			// 		}
+			// 	}
 
-				ctxKiri.putImageData(currentPixelsKiri, 0, 0);
-				objekKiri.src = canvasKiri.toDataURL("image/png");
-			}
+			// 	ctxKiri.putImageData(currentPixelsKiri, 0, 0);
+			// 	objekKiri.src = canvasKiri.toDataURL("image/png");
+			// }
 
-			function getPixelsKiri(img) {
-				canvasKiri.width = img.width;
-				canvasKiri.height = img.height;
+			// function getPixelsKiri(img) {
+			// 	canvasKiri.width = img.width;
+			// 	canvasKiri.height = img.height;
 
-				ctxKiri.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, img.width, img.height);
-				originalPixelsKiri = ctxKiri.getImageData(0, 0, img.width, img.height);
-				currentPixelsKiri = ctxKiri.getImageData(0, 0, img.width, img.height);
+			// 	ctxKiri.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, img.width, img.height);
+			// 	originalPixelsKiri = ctxKiri.getImageData(0, 0, img.width, img.height);
+			// 	currentPixelsKiri = ctxKiri.getImageData(0, 0, img.width, img.height);
 
-				img.onload = null;
-			}
+			// 	img.onload = null;
+			// }
 
-			// ###################### Image ATAS #########################
-			var objekAtas = document.getElementById("pic_atap");
-			var canvasAtas = document.createElement("canvas");
-			var ctxAtas = canvasAtas.getContext("2d");
-			var originalPixelsAtas = null;
-			var currentPixelsAtas = null;
+			// // ###################### Image ATAS #########################
+			// var objekAtas = document.getElementById("pic_atap");
+			// var canvasAtas = document.createElement("canvas");
+			// var ctxAtas = canvasAtas.getContext("2d");
+			// var originalPixelsAtas = null;
+			// var currentPixelsAtas = null;
 
-			function changeColorAtas(selectedColor) {
-				if (!originalPixelsAtas) return; // Check if image has loaded
-				var newColor = HexToRGB(selectedColor);
+			// function changeColorAtas(selectedColor) {
+			// 	if (!originalPixelsAtas) return; // Check if image has loaded
+			// 	var newColor = HexToRGB(selectedColor);
 
-				for (var I = 0, L = originalPixelsAtas.data.length; I < L; I += 4) {
-					if (currentPixelsAtas.data[I + 3] > 0) {
-						currentPixelsAtas.data[I] = originalPixelsAtas.data[I] / 255 * newColor.R;
-						currentPixelsAtas.data[I + 1] = originalPixelsAtas.data[I + 1] / 255 * newColor.G;
-						currentPixelsAtas.data[I + 2] = originalPixelsAtas.data[I + 2] / 255 * newColor.B;
-					}
-				}
+			// 	for (var I = 0, L = originalPixelsAtas.data.length; I < L; I += 4) {
+			// 		if (currentPixelsAtas.data[I + 3] > 0) {
+			// 			currentPixelsAtas.data[I] = originalPixelsAtas.data[I] / 255 * newColor.R;
+			// 			currentPixelsAtas.data[I + 1] = originalPixelsAtas.data[I + 1] / 255 * newColor.G;
+			// 			currentPixelsAtas.data[I + 2] = originalPixelsAtas.data[I + 2] / 255 * newColor.B;
+			// 		}
+			// 	}
 
-				ctxAtas.putImageData(currentPixelsAtas, 0, 0);
-				objekAtas.src = canvasAtas.toDataURL("image/png");
-			}
+			// 	ctxAtas.putImageData(currentPixelsAtas, 0, 0);
+			// 	objekAtas.src = canvasAtas.toDataURL("image/png");
+			// }
 
-			function getPixelsAtas(img) {
-				canvasAtas.width = img.width;
-				canvasAtas.height = img.height;
+			// function getPixelsAtas(img) {
+			// 	canvasAtas.width = img.width;
+			// 	canvasAtas.height = img.height;
 
-				ctxAtas.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, img.width, img.height);
-				originalPixelsAtas = ctxAtas.getImageData(0, 0, img.width, img.height);
-				currentPixelsAtas = ctxAtas.getImageData(0, 0, img.width, img.height);
+			// 	ctxAtas.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, img.width, img.height);
+			// 	originalPixelsAtas = ctxAtas.getImageData(0, 0, img.width, img.height);
+			// 	currentPixelsAtas = ctxAtas.getImageData(0, 0, img.width, img.height);
 
-				img.onload = null;
-			}
+			// 	img.onload = null;
+			// }
 		</script>
 
 
