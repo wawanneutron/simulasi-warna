@@ -7,6 +7,10 @@ div.preview_color {
 	margin-right: 20px;
 }
 
+div.color_select:active{
+	border: 2px solid salmon;
+}
+
 .object_virtual{
 	position: relative;
 	/* margin-bottom: 30vh; */
@@ -21,5 +25,30 @@ div.preview_color {
 	margin-bottom: 20px;
 }
 
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 768px) {
+	div.col-description{
+		margin-top: -200px;
+	}
+}
+@media only screen and (max-width: 407px) {
+	div.col-description{
+		margin-top: -320px;
+	}
+}
 
-
+@media only screen and (min-width: 768px) {
+	div.col-description{
+		margin-top: -800px;
+	}
+}
+@media only screen and (min-width: 992px) {
+	div.col-description{
+		margin-top: -300px;
+	}
+}
+@media only screen and (min-width: 1200px) {
+	div.col-description{
+		margin-top: -90px;
+	}
+}
