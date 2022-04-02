@@ -7,10 +7,19 @@ div.preview_color {
 	margin-right: 20px;
 }
 
-
-
-.painted_object {
-	position: absolute;
+.object_virtual{
+	position: relative;
+	/* margin-bottom: 30vh; */
 }
+
+.painted_object_room {
+	position: absolute;
+	/* top: 0; */
+}
+.object_virtual img{
+	border-radius: 12px;
+	margin-bottom: 20px;
+}
+
 
 
