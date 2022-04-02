@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" type="image/x-icon" href="http://www.binadidaya.com/res/images/Penta_icon.ico">
+	<title>Penta Prima | Virtual Painter</title>
+	<link rel="stylesheet" href="virtual_painter_file/style/style.css" type="text/css">
+	<link rel="stylesheet" href="virtual_painter_file/style/style-color.css" type="text/css">
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body onload="browser_detector();">
+	<section class="section-virtual-paint container">
+		<h2>Simulasi Pengecatan Kamar Tidur</h2>
+		<div class="row">
+			<div class="col-md-7">
+				<div class="object_virtual">
+					<div class="painted_object_room">
+						<img id="pic_room" class="img-fluid" src="virtual_painter_file/room2.png">
+					</div>
+					<div class="painted_object_virtual">
+						<img id="pic_kanan" class="img-fluid" src="virtual_painter_file/dinding_kanan4.png"
+							onload="getPixelsKanan(this)">
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<!-- ######### Pilih Warna Kanan ########3 -->
+				<div class="card h-50">
+					<div class="card-header">
+						<div id="focus_color_kanan" class="preview_color"></div>
+						<div id="nama_color_kanan" class="font16"></div>
+						<div id="kode_color_kanan">
+						</div>
+					</div>
+					<div class="overflow-auto">
+						<div class="card-body">
+							<div class="nomor_obyek style1 style2 style4">PILIHAN WARNA</div>
+						</div>
+						<div class="card-body">
+							<div>
+								<div id="result_kanan">
+									<!-- color palet -->
+									<!-- class="color_container" -->
+									<div class="color-palet">
+										<div class="color_select" style="background-color:rgb(237,202,194);"
+											onclick="changeColor('237202194'); previewColorKanan('rgb(237,202,194)', 'Peach Dust', '7705-P353');"
+											title="Peach Dust"></div>
+										<div class="color_select" style="background-color:rgb(219,200,222);"
+											onclick="changeColor('219200222'); previewColorKanan('rgb(219,200,222)', 'Vintage Violet', '7705-41013');"
+											title="Vintage Violet"></div>
+										<div class="color_select" style="background-color:rgb(240,206,222);"
+											onclick="changeColor('240206222'); previewColorKanan('rgb(240,206,222)', 'Frosted', '7705-30039');"
+											title="Frosted"></div>
+										<div class="color_select" style="background-color:rgb(220,135,175);"
+											onclick="changeColor('220135175'); previewColorKanan('rgb(220,135,175)', 'Exotic Pink', '7705-34063');"
+											title="Exotic Pink"></div>
+										<div class="color_select" style="background-color:rgb(179,75,77);"
+											onclick="changeColor('179075077'); previewColorKanan('rgb(179,75,77)', 'Bright Red', '7705-33040');"
+											title="Bright Red"></div>
+										<div class="color_select" style="background-color:rgb(197,66,67);"
+											onclick="changeColor('197066067'); previewColorKanan('rgb(197,66,67)', 'Sunrise', '7705-46005');"
+											title="Sunrise"></div>
+										<div class="color_select" style="background-color:rgb(166,65,72);"
+											onclick="changeColor('166065072'); previewColorKanan('rgb(166,65,72)', 'Drum Beat', '7705-37071');"
+											title="Drum Beat"></div>
+										<div class="color_select" style="background-color:rgb(246,212,183);"
+											onclick="changeColor('246212183'); previewColorKanan('rgb(246,212,183)', 'Peach', '7705-31000');"
+											title="Peach"></div>
+										<div class="color_select" style="background-color:rgb(237,206,162);"
+											onclick="changeColor('237206162'); previewColorKanan('rgb(237,206,162)', 'Golden Apricot', '7705-11007');"
+											title="Golden Apricot"></div>
+										<div class="color_select" style="background-color:rgb(247,204,138);"
+											onclick="changeColor('247204138'); previewColorKanan('rgb(247,204,138)', 'Pale Orange', '7705-20012');"
+											title="Pale Orange"></div>
+										<div class="color_select" style="background-color:rgb(229,161,120);"
+											onclick="changeColor('247204138'); previewColorKanan('rgb(247,204,138)', 'Istambul', '7705-33004');"
+											title="Istambul"></div>
+										<div class="color_select" style="background-color:rgb(222,146,96);"
+											onclick="changeColor('222146096)'); previewColorKanan('rgb(222,146,96)', 'Orange Yellow', '7705-34002');"
+											title="Orange Yellow"></div>
+										<div class="color_select" style="background-color:rgb(232,140,81);"
+											onclick="changeColor('232140081'); previewColorKanan('rgb(232,140,81)', 'Tangerine', '7705-23044');"
+											title="Tangerine"></div>
+										<div class="color_select" style="background-color:rgb(206,181,161);"
+											onclick="changeColor('206181161'); previewColorKanan('rgb(206,181,161)', 'Peach Pink', '7705-P324');"
+											title="Peach Pink"></div>
+										<div class="color_select" style="background-color:rgb(234,210,129);"
+											onclick="changeColor('234210129'); previewColorKanan('rgb(234,210,129)', 'Honey Moon', '7705-11195');"
+											title="Honey Moon"></div>
+										<div class="color_select" style="background-color:rgb(241,229,209);"
+											onclick="changeColor('241229209'); previewColorKanan('rgb(241,229,209)', 'Vanilla Puccino', '7705-10204');"
+											title="Vanilla Puccino"></div>
+										<div class="color_select" style="background-color:rgb(245,227,201);"
+											onclick="changeColor('245227201'); previewColorKanan('rgb(245,227,201)', 'Currier Cream', '7705-10012');"
+											title="Currier Cream"></div>
+										<div class="color_select" style="background-color:rgb(243,223,205);"
+											onclick="changeColor('243223205'); previewColorKanan('rgb(243,223,205)', 'Candy Yellow', '7705-30001');"
+											title="Candy Yellow"></div>
+										<div class="color_select" style="background-color:rgb(220,158,148);"
+											onclick="changeColor('220158148'); previewColorKanan('rgb(220,158,148)', 'Wild Rose', '7705-42001');"
+											title="Wild Rose"></div>
+										<div class="color_select" style="background-color:rgb(236,224,194);"
+											onclick="changeColor('236224194'); previewColorKanan('rgb(236,224,194)', 'Rose White', '7705-P304');"
+											title="Rose White"></div>
+										<div class="color_select" style="background-color:rgb(242,232,200);"
+											onclick="changeColor('242232200'); previewColorKanan('rgb(242,232,200)', 'Lily White', '7705-P306');"
+											title="Lily White"></div>
+										<div class="color_select" style="background-color:rgb(248,239,204);"
+											onclick="changeColor('248239204'); previewColorKanan('rgb(248,239,204)', 'Spring Sun', '7705-10205');"
+											title="Spring Sun"></div>
+										<div class="color_select" style="background-color:rgb(243,220,95);"
+											onclick="changeColor('243220095'); previewColorKanan('rgb(243,220,95)', 'True Yellow', '7705-14063');"
+											title="True Yellow"></div>
+										<div class="color_select" style="background-color:rgb(244,219,130);"
+											onclick="changeColor('244219130'); previewColorKanan('rgb(244,219,130)', 'Ray of Light', '7705-12106');"
+											title="Ray of Light"></div>
+										<div class="color_select" style="background-color:rgb(248,212,100);"
+											onclick="changeColor('248212100'); previewColorKanan('rgb(248,212,100)', 'Canary Yellow', '7705-25002');"
+											title="Canary Yellow"></div>
+										<div class="color_select" style="background-color:rgb(222,219,207);"
+											onclick="changeColor('222219207'); previewColorKanan('rgb(222,219,207)', 'Snow Drop', '7705-70032');"
+											title="Snow Drop"></div>
+										<div class="color_select" style="background-color:rgb(205,227,164);"
+											onclick="changeColor('205227164'); previewColorKanan('rgb(205,227,164)', 'Windsurfer', '7705-61060');"
+											title="Windsurfer"></div>
+										<div class="color_select" style="background-color:rgb(178,217,132);"
+											onclick="changeColor('178217132'); previewColorKanan('rgb(178,217,132)', 'Leapfrog', '7705-62094');"
+											title="Leapfrog"></div>
+										<div class="color_select" style="background-color:rgb(166,219,143);"
+											onclick="changeColor('166219143'); previewColorKanan('rgb(166,219,143)', 'Brite Green', '7705-62025');"
+											title="Brite Green"></div>
+										<div class="color_select" style="background-color:rgb(120,167,86);"
+											onclick="changeColor('120167086'); previewColorKanan('rgb(120,167,86)', 'Sweet Celery', '7705-63114');"
+											title="Sweet Celery"></div>
+										<div class="color_select" style="background-color:rgb(38,159,90);"
+											onclick="changeColor('098159090'); previewColorKanan('rgb(38,159,90)', 'Emerald Isle', '7705-64097');"
+											title="Emerald Isle"></div>
+										<div class="color_select" style="background-color:rgb(243,239,219);"
+											onclick="changeColor('243239219'); previewColorKanan('rgb(243,239,219)', 'Blue Bell White', '7705-90184');"
+											title="Blue Bell White"></div>
+										<div class="color_select" style="background-color:rgb(199,170,50);"
+											onclick="changeColor('199170050'); previewColorKanan('rgb(199,170,50)', 'Angel Fern', '7705');"
+											title="Angel Fern"></div>
+										<div class="color_select" style="background-color:rgb(156,138,61);"
+											onclick="changeColor('156138061'); previewColorKanan('rgb(156,138,61)', 'Triple Olive', '7705-64091');"
+											title="Triple Olive"></div>
+										<div class="color_select" style="background-color:rgb(157,190,108);"
+											onclick="changeColor('157190108'); previewColorKanan('rgb(157,190,108)', 'Tropicana', '7705-62093');"
+											title="Tropicana"></div>
+										<div class="color_select" style="background-color:rgb(99,166,122);"
+											onclick="changeColor('099166122'); previewColorKanan('rgb(99,166,122)', 'Jade', '7705-64000');"
+											title="Jade"></div>
+										<div class="color_select" style="background-color:rgb(55,126,113);"
+											onclick="changeColor('055126113'); previewColorKanan('rgb(55,126,113)', 'Dark Green', '7705-65021');"
+											title="Dark Green"></div>
+										<div class="color_select" style="background-color:rgb(240,216,167);"
+											onclick="changeColor('240216167'); previewColorKanan('rgb(240,216,167)', 'L House Point', '7705-20001');"
+											title="L House Point"></div>
+										<div class="color_select" style="background-color:rgb(220,200,157);"
+											onclick="changeColor('220200157'); previewColorKanan('rgb(220,200,157)', 'Antique White', '7705-P332');"
+											title="Antique White"></div>
+										<div class="color_select" style="background-color:rgb(213,196,167);"
+											onclick="changeColor('213196167'); previewColorKanan('rgb(213,196,167)', 'Malacca', '7705-12105');"
+											title="Malacca"></div>
+										<div class="color_select" style="background-color:rgb(196,170,126);"
+											onclick="changeColor('196170126'); previewColorKanan('rgb(196,170,126)', 'Cream', '7705-P382');"
+											title="Cream"></div>
+										<div class="color_select" style="background-color:rgb(175,140,95);"
+											onclick="changeColor('175140095'); previewColorKanan('rgb(175,140,95)', 'Western Beige', '7705-83023');"
+											title="Western Beige"></div>
+										<div class="color_select" style="background-color:rgb(170,117,80);"
+											onclick="changeColor('170117080'); previewColorKanan('rgb(170,117,80)', 'Chelsea', '7705-84050');"
+											title="Chelsea"></div>
+										<div class="color_select" style="background-color:rgb(231,235,236);"
+											onclick="changeColor('231235236'); previewColorKanan('rgb(231,235,236)', 'Metro White', '7705-P300');"
+											title="Metro White"></div>
+										<div class="color_select" style="background-color:rgb(234,230,223);"
+											onclick="changeColor('234230223'); previewColorKanan('rgb(234,230,223)', 'Seashell', '7705-10206');"
+											title="Seashell"></div>
+										<div class="color_select" style="background-color:rgb(218,214,206);"
+											onclick="changeColor('218214206'); previewColorKanan('rgb(218,214,206)', 'Lakestone 153', '7705-70103');"
+											title="Lakestone 153"></div>
+										<div class="color_select" style="background-color:rgb(218,208,216);"
+											onclick="changeColor('218208216'); previewColorKanan('rgb(218,208,216)', 'Rose Garden', '7705-40011');"
+											title="Rose Garden"></div>
+										<div class="color_select" style="background-color:rgb(181,167,210);"
+											onclick="changeColor('181167210'); previewColorKanan('rgb(181,167,210)', 'Night Magic', '7705-42009');"
+											title="Night Magic"></div>
+										<div class="color_select" style="background-color:rgb(130,102,148);"
+											onclick="changeColor('130102148'); previewColorKanan('rgb(130,102,148)', 'Antique', '7705-47001');"
+											title="Antique"></div>
+										<div class="color_select" style="background-color:rgb(209,213,215);"
+											onclick="changeColor('209213215'); previewColorKanan('rgb(209,213,215)', 'Horizon Grey', '7705-70102');"
+											title="Horizon Grey"></div>
+										<div class="color_select" style="background-color:rgb(208,210,210);"
+											onclick="changeColor('208210210'); previewColorKanan('rgb(208,210,210)', 'Ash Marine', '7705-71069');"
+											title="Ash Marine"></div>
+										<div class="color_select" style="background-color:rgb(184,187,187);"
+											onclick="changeColor('184187187'); previewColorKanan('rgb(184,187,187)', 'Frost Grey', '7705-71112');"
+											title="Frost Grey"></div>
+										<div class="color_select" style="background-color:rgb(180,181,178);"
+											onclick="changeColor('180181178'); previewColorKanan('rgb(180,181,178)', 'Ubud', '7705-71063');"
+											title="Ubud"></div>
+										<div class="color_select" style="background-color:rgb(144,142,139);"
+											onclick="changeColor('144142139'); previewColorKanan('rgb(144,142,139)', 'Candi', '7705-73024');"
+											title="Candi"></div>
+										<div class="color_select" style="background-color:rgb(93,97,101);"
+											onclick="changeColor('093097101'); previewColorKanan('rgb(93,97,101)', 'Sand Dark Grey', '7705-77019');"
+											title="Sand Dark Grey"></div>
+										<div class="color_select" style="background-color:rgb(191,204,222);"
+											onclick="changeColor('191204222'); previewColorKanan('rgb(191,204,222)', 'Igloo', '7705-50016');"
+											title="Igloo"></div>
+										<div class="color_select" style="background-color:rgb(191,209,213);"
+											onclick="changeColor('191209213'); previewColorKanan('rgb(191,209,213)', 'Cerulean Blue', '7705-51050');"
+											title="Cerulean Blue"></div>
+										<div class="color_select" style="background-color:rgb(198,217,227);"
+											onclick="changeColor('198217227'); previewColorKanan('rgb(198,217,227)', 'Oxy Blue 1', '7705-50056');"
+											title="Oxy Blue 1"></div>
+										<div class="color_select" style="background-color:rgb(146,198,227);"
+											onclick="changeColor('146198227'); previewColorKanan('rgb(146,198,227)', 'Delft China', '7705-51051');"
+											title="Delft China"></div>
+										<div class="color_select" style="background-color:rgb(76,149,196);"
+											onclick="changeColor('076149196'); previewColorKanan('rgb(76,149,196)', 'Bunaken Blue', '7705-53013');"
+											title="Bunaken Blue"></div>
+										<div class="color_select" style="background-color:rgb(137,151,185);"
+											onclick="changeColor('137151185'); previewColorKanan('rgb(137,151,185)', 'Cloud Blue', '7705-52002');"
+											title="Cloud Blue"></div>
+										<div class="color_select" style="background-color:rgb(51,93,167);"
+											onclick="changeColor('051093167'); previewColorKanan('rgb(51,93,167)', 'Kingdom', '7705-55058');"
+											title="Kingdom"></div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-7 col-description">
+				<div class="card border-0">
+					<div class=" card-body">
+						<label style="color:white; font-size:14px;">
+							<div align="center">
+								<img src="virtual_painter_file/Pentalex.png" class="img-fluid" />
+							</div>
+						</label>
+						<p>
+							<strong>PENTALEX (7700 - SERI)<br />
+							</strong><em>Acrylic Emulsion Paint for Interior &amp; Exterior</em><br />
+							<br />
+							Cat tembok yang terbuat dari bahan dasar resin acrylic dasar air, pigment, dan
+							additive-additive
+							pilihan, tidak berbau, mudah diaplikasi, dan cepat kering. Lapisan keringnya tidak mudah
+							retak,
+							daya
+							lekatnya sangat baik dan tidak mudah luntur bila terkena air, menjadikan cat ini bisa
+							digunakan
+							untuk pelindung permukaan dinding bagian dalam maupun luar ruangan. </p>
+						<br />
+						<p>* Warna-warna mendekati warna aslinya, cahaya dan bentuk permukaan mempengaruhi hasil akhir.
+						</p>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+</body>
+<script src="/virtual_painter_file/script/script-collor.js"></script>
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+</script>
+
+</html>
