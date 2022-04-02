@@ -2,7 +2,7 @@
 
 ## Link
 
-[https://virtual-paint.netlify.app/](url)
+[Demo Live](https://virtual-paint.netlify.app/)
 
 ## desktop
 
