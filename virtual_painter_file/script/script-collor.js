@@ -1,23 +1,3 @@
-/* fix warna tidak bisa dirubah saat pertama kali browser dibuka
-maka jalankan reload browser*/
-// window.onload = function () {
-// 	if (!window.location.hash) {
-// 		window.location = window.location + '#virtual';
-// 		window.location.reload();
-// 	}
-// }
-function getPixelsKanan(img) {
-	console.info('hello');
-	canvas.width = img.width;
-	canvas.height = img.height;
-
-	ctx.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, img.width, img.height);
-	originalPixels = ctx.getImageData(0, 0, img.width, img.height);
-	currentPixels = ctx.getImageData(0, 0, img.width, img.height);
-
-	img.onload = null;
-}
-
 /* Fungsi untuk mengganti Warna Preview Color pada Object Atap */
 function previewColorKanan(color, nama, kode) {
 	document.getElementById('focus_color_kanan').style.backgroundColor = color;
@@ -55,4 +35,23 @@ function changeColor(selectedColor) {
 
 	ctx.putImageData(currentPixels, 0, 0);
 	objek.src = canvas.toDataURL("image/png");
+}
+/* fix warna tidak bisa dirubah saat pertama kali browser dibuka
+maka jalankan reload browser*/
+window.onload = function () {
+	if (!window.location.hash) {
+		window.location = window.location + '#virtual';
+		window.location.reload();
+	}
+}
+
+function getPixelsKanan(img) {
+	canvas.width = img.width;
+	canvas.height = img.height;
+
+	ctx.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, img.width, img.height);
+	originalPixels = ctx.getImageData(0, 0, img.width, img.height);
+	currentPixels = ctx.getImageData(0, 0, img.width, img.height);
+
+	img.onload = null;
 }
