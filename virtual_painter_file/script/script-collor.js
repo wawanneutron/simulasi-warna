@@ -36,6 +36,14 @@ function changeColor(selectedColor) {
 	ctx.putImageData(currentPixels, 0, 0);
 	objek.src = canvas.toDataURL("image/png");
 }
+/* fix warna tidak bisa dirubah saat pertama kali browser dibuka
+maka jalankan reload browser*/
+window.onload = function () {
+	if (!window.location.hash) {
+		window.location = window.location + '#virtual';
+		window.location.reload();
+	}
+}
 
 function getPixelsKanan(img) {
 	canvas.width = img.width;
