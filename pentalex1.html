@@ -1,25 +1,253 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="shortcut icon" type="image/x-icon" href="http://www.Pentapaint.com/res/images/Penta_icon.ico">
-<title>Penta Prima | Virtual Painter</title>
-<link rel="stylesheet" href="Penta%20Prima%20_%20Virtual%20Painter_files/style.css" type="text/css">
-<script type="text/javascript" src="Penta%20Prima%20_%20Virtual%20Painter_files/script.js"></script>
-<script type="text/javascript" src="Penta%20Prima%20_%20Virtual%20Painter_files/fading_script.js"></script>
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" type="image/x-icon" href="/virtual_painter_file/icon.png">
+	<title>Penta Prima | Virtual Painter</title>
+	<link rel="stylesheet" href="virtual_painter_file/style/style.css" type="text/css">
+	<link rel="stylesheet" href="virtual_painter_file/style/style-color.css" type="text/css">
+	<script type="text/javascript" src="virtual_painter_file/script/script.js"></script>
+	<script type="text/javascript" src="virtual_painter_file/script/fading_script.js"></script>
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+	<section class="section-virtual-paint container">
+		<h2>Simulasi Pengecatan Kamar Tidur</h2>
+		<div class="row">
+			<div class="col-md-7">
+				<div class="object_virtual">
+					<div class="painted_object_room">
+						<img id="pic_room" class="img-fluid" src="virtual_painter_file/room.png">
+					</div>
+					<div class="painted_object_virtual">
+						<img id="pic_kanan" class="img-fluid" src="virtual_painter_file/dinding_kanan.png"
+							onload="getPixelsKanan(this)">
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<!-- ######### Pilih Warna Kanan ########3 -->
+				<div class="card h-50">
+					<div class="card-header">
+						<div id="focus_color_kanan" class="preview_color"></div>
+						<div id="nama_color_kanan" class="font16"></div>
+						<div id="kode_color_kanan">
+						</div>
+					</div>
+					<div class="overflow-auto">
+						<div class="card-body">
+							<div class="nomor_obyek style1 style2 style4">PILIHAN WARNA</div>
+						</div>
+						<div class="card-body">
+							<div>
+								<div id="result_kanan">
+									<!-- color palet -->
+									<!-- class="color_container" -->
+									<div class="color-palet">
+										<div class="color_select" style="background-color:#faf7f2;"
+											onclick="changeColor('#faf7f2'); previewColorKanan('#faf7f2', 'Clasic white', 'P 309');"
+											title="Clasic white"></div>
+										<div class="color_select" style="background-color:#fffedf;"
+											onclick="changeColor('#fffedf'); previewColorKanan('#fffedf', 'Lily white', 'P 306');"
+											title="Lily white"></div>
+										<div class="color_select" style="background-color:#fff6d9;"
+											onclick="changeColor('#fff6d9'); previewColorKanan('#fff6d9', 'Barley white', 'P 305');"
+											title="Barley white"></div>
+										<div class="color_select" style="background-color:#fae8d0;"
+											onclick="changeColor('#fae8d0'); previewColorKanan('#fae8d0', 'Rose white', 'P 304');"
+											title="Rose white"></div>
+										<div class="color_select" style="background-color:#e9d8a4;"
+											onclick="changeColor('#e9d8a4'); previewColorKanan('#e9d8a4', 'Lemon Drop', 'P 350');"
+											title="Lemon Drop"></div>
+										<div class="color_select" style="background-color:#c6c9f2;"
+											onclick="changeColor('#c6c9f2'); previewColorKanan('#c6c9f2', 'Igloo', '50016');"
+											title="Igloo"></div>
+										<div class="color_select" style="background-color:#cdd1dd;"
+											onclick="changeColor('#cdd1dd'); previewColorKanan('#cdd1dd', 'Light Grey', 'P 369');"
+											title="Light Grey"></div>
+										<div class="color_select" style="background-color:#b7ab9b;"
+											onclick="changeColor('#b7ab9b'); previewColorKanan('#b7ab9b', 'Magnolia', 'P 312');"
+											title="Magnolia"></div>
+										<div class="color_select" style="background-color:#838383;"
+											onclick="changeColor('#838383'); previewColorKanan('#838383', 'Mist Grey', 'P 321');"
+											title="Mist Grey"></div>
+										<div class="color_select" style="background-color:#4b3a44;"
+											onclick="changeColor('#4b3a44'); previewColorKanan('#4b3a44', 'Chestnut Brown', 'P 348');"
+											title="Chestnut Brown"></div>
+										<div class="color_select" style="background-color:#f4f9fd;"
+											onclick="changeColor('#f4f9fd'); previewColorKanan('#f4f9fd', 'Metro White', 'P 300');"
+											title="Metro White"></div>
+										<div class="color_select" style="background-color:#a4b5af;"
+											onclick="changeColor('#a4b5af'); previewColorKanan('#a4b5af', 'Crystal Blue', 'P 352');"
+											title="Crystal Blue"></div>
+										<div class="color_select" style="background-color:#e8d7c7;"
+											onclick="changeColor('#e8d7c7'); previewColorKanan('#e8d7c7', 'Orchid white', 'P 303');"
+											title="Orchid white"></div>
+										<div class="color_select" style="background-color:#e7e6d1;"
+											onclick="changeColor('#e7e6d1'); previewColorKanan('#e7e6d1', 'Bluebell White', 'P 301');"
+											title="Bluebell White"></div>
+										<div class="color_select" style="background-color:#354581;"
+											onclick="changeColor('#354581'); previewColorKanan('#354581', 'Benton Harbor', '54004');"
+											title="Benton Harbor"></div>
+										<div class="color_select" style="background-color:#ffdbb9;"
+											onclick="changeColor('#ffdbb9'); previewColorKanan('#ffdbb9', 'Peach', '31000');"
+											title="Peach"></div>
+										<div class="color_select" style="background-color:#c6a18e;"
+											onclick="changeColor('#c6a18e'); previewColorKanan('#c6a18e', 'Peach Pink', 'P 324');"
+											title="Peach Pink"></div>
+										<div class="color_select" style="background-color:#c96357;"
+											onclick="changeColor('#c96357'); previewColorKanan('#c96357', 'Coral Pink', 'P 310');"
+											title="Coral Pink"></div>
+										<div class="color_select" style="background-color:#a33929;"
+											onclick="changeColor('#a33929'); previewColorKanan('#a33929', 'Poppy', 'P 322');"
+											title="Poppy"></div>
+										<div class="color_select" style="background-color:#792622;"
+											onclick="changeColor('#792622'); previewColorKanan('#792622', 'Coral Red', 'P 313');"
+											title="Coral Red"></div>
+										<div class="color_select" style="background-color:#fde9ac;"
+											onclick="changeColor('#fde9ac'); previewColorKanan('#fde9ac', 'Light House Point', '20001');"
+											title="Light House Point"></div>
+										<div class="color_select" style="background-color:#f9dfa4;"
+											onclick="changeColor('#f9dfa4'); previewColorKanan('#f9dfa4', 'Golden Apricot', '11007');"
+											title="Golden Apricot"></div>
+										<div class="color_select" style="background-color:#e88c63;"
+											onclick="changeColor('#e88c63'); previewColorKanan('#e88c63', 'Istambul', '33004');"
+											title="Istambul"></div>
+										<div class="color_select" style="background-color:#d35f2c;"
+											onclick="changeColor('#d35f2c'); previewColorKanan('#d35f2c', 'Orange Yellow', '34002');"
+											title="Orange Yellow"></div>
+										<div class="color_select" style="background-color:#f3dd49;"
+											onclick="changeColor('#f3dd49'); previewColorKanan('#f3dd49', 'Canary Yellow', '25002');"
+											title="Canary Yellow"></div>
+										<div class="color_select" style="background-color:#85bc95;"
+											onclick="changeColor('#85bc95'); previewColorKanan('#85bc95', 'Fresh Green', 'P 320');"
+											title="Fresh Green"></div>
+										<div class="color_select" style="background-color:#66ad9b;"
+											onclick="changeColor('#66ad9b'); previewColorKanan('#66ad9b', 'Turquoise', 'P 377');"
+											title="Turquoise"></div>
+										<div class="color_select" style="background-color:#2c8394;"
+											onclick="changeColor('#2c8394'); previewColorKanan('#2c8394', 'Aqua Blue', '64001');"
+											title="Aqua Blue"></div>
+										<div class="color_select" style="background-color:#195182;"
+											onclick="changeColor('#195182'); previewColorKanan('#195182', 'Romantic Blue', '54003');"
+											title="Romantic Blue"></div>
+										<div class="color_select" style="background-color:#17231f;"
+											onclick="changeColor('#17231f'); previewColorKanan('#17231f', 'Forest Green', '68000');"
+											title="Forest Green"></div>
+										<div class="color_select" style="background-color:#a1babf;"
+											onclick="changeColor('#a1babf'); previewColorKanan('#a1babf', 'Sky Blue', 'P 327');"
+											title="Sky Blue"></div>
+										<div class="color_select" style="background-color:#9bc3cb;"
+											onclick="changeColor('#9bc3cb'); previewColorKanan('#9bc3cb', 'Ice Blue', 'P 370');"
+											title="Ice Blue"></div>
+										<div class="color_select" style="background-color:#6c7b80;"
+											onclick="changeColor('#6c7b80'); previewColorKanan('#6c7b80', 'Lido', 'P 374');"
+											title="Lido"></div>
+										<div class="color_select" style="background-color:#6c3d5d;"
+											onclick="changeColor('#6c3d5d'); previewColorKanan('#6c3d5d', 'Antique', '47001');"
+											title="Antique"></div>
+										<div class="color_select" style="background-color:#fcf9e6;"
+											onclick="changeColor('#fcf9e6'); previewColorKanan('#fcf9e6', 'Brilliant White', 'P 329');"
+											title="Brilliant White"></div>
+										<div class="color_select" style="background-color:#e8d0e6;"
+											onclick="changeColor('#e8d0e6'); previewColorKanan('#e8d0e6', 'Rose Garden', '40011');"
+											title="Rose Garden"></div>
+										<div class="color_select" style="background-color:#f9cebe;"
+											onclick="changeColor('#f9cebe'); previewColorKanan('#f9cebe', 'Peach Dust', 'P 353');"
+											title="Peach Dust"></div>
+										<div class="color_select" style="background-color:#e48768;"
+											onclick="changeColor('#e48768'); previewColorKanan('#e48768', 'Wild Rose', '42001');"
+											title="Wild Rose"></div>
+										<div class="color_select" style="background-color:#e06440;"
+											onclick="changeColor('#e06440'); previewColorKanan('#e06440', 'Cinnamon Spice', '44004');"
+											title="Cinnamon Spice"></div>
+										<div class="color_select" style="background-color:#c6240d;"
+											onclick="changeColor('#c6240d'); previewColorKanan('#c6240d', 'Sunrise', '46005');"
+											title="Sunrise"></div>
+										<div class="color_select" style="background-color:#fff3d9;"
+											onclick="changeColor('#fff3d9'); previewColorKanan('#fff3d9', 'Candy Yellow', '30001');"
+											title="Candy Yellow"></div>
+										<div class="color_select" style="background-color:#fff2cd;"
+											onclick="changeColor('#fff2cd'); previewColorKanan('#fff2cd', 'Currier Cream', '10012');"
+											title="Currier Cream"></div>
+										<div class="color_select" style="background-color:#f4e8b4;"
+											onclick="changeColor('#f4e8b4'); previewColorKanan('#f4e8b4', 'Apple White', 'P 302');"
+											title="Apple White"></div>
+										<div class="color_select" style="background-color:#e3d284;"
+											onclick="changeColor('#e3d284'); previewColorKanan('#e3d284', 'Antique White', 'P 332');"
+											title="Antique White"></div>
+										<div class="color_select" style="background-color:#c2a557;"
+											onclick="changeColor('#c2a557'); previewColorKanan('#c2a557', 'Cream', 'P 382');"
+											title="Cream"></div>
+										<div class="color_select" style="background-color:#f5e3c3;"
+											onclick="changeColor('#f5e3c3'); previewColorKanan('#f5e3c3', 'Golden Wheat', '2044P');"
+											title="Golden Wheat"></div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-7 col-description-second">
+				<div class="card border-0">
+					<div class=" card-body">
+						<label style="color:white; font-size:14px;">
+							<div align="center">
+								<img src="virtual_painter_file/Pentalex.png" class="img-fluid" />
+							</div>
+						</label>
+						<p>
+							<strong>PENTALEX (7700 - SERI)<br />
+							</strong><em>Acrylic Emulsion Paint for Interior &amp; Exterior</em><br />
+							<br />
+							Cat tembok yang terbuat dari bahan dasar resin acrylic dasar air, pigment, dan
+							additive-additive
+							pilihan, tidak berbau, mudah diaplikasi, dan cepat kering. Lapisan keringnya tidak mudah
+							retak,
+							daya
+							lekatnya sangat baik dan tidak mudah luntur bila terkena air, menjadikan cat ini bisa
+							digunakan
+							untuk pelindung permukaan dinding bagian dalam maupun luar ruangan. </p>
+						<br />
+						<p>* Warna-warna mendekati warna aslinya, cahaya dan bentuk permukaan mempengaruhi hasil akhir.
+						</p>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+</body>
+
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+</script>
 
 <script>
 	/* Fungsi untuk mengganti Warna pada preview 
-	function changeColor(color, title_color) {
-		document.getElementById('preview').style.backgroundColor = color;
-		document.getElementById('title').innerHTML = title_color;
-	} */
-	
+function changeColor(color, title_color) {
+	document.getElementById('preview').style.backgroundColor = color;
+	document.getElementById('title').innerHTML = title_color;
+} */
+
 	/* Fungsi test  */
 	function test() {
 		alert("HELL YEAH!!!");
 	}
-	
+
 	/* Fungsi untuk mencari suatu warna berdasarkan dengan ID tertentu.
 	 * Hasil dari fungsi ini berupa kode suatu warna.
 	 */
@@ -27,74 +255,74 @@
 		var val = document.getElementById(tagID).value;
 		return val;
 	}
-	
+
 	/* Fungsi untuk input data dengan enter. */
 	function searchKeyPress(e, tagID, txtBox, minLength) {
-        // look for window.event in case event isn't passed in
-        if (typeof e == 'undefined' && window.event) { 
-			e = window.event; 
+		// look for window.event in case event isn't passed in
+		if (typeof e == 'undefined' && window.event) {
+			e = window.event;
 		}
 		// keyCode untuk tombol 'ENTER' adalah 13
-        if (e.keyCode == 13) {
-            var pjg_data = txtBox.value.length;
-            // Jika panjang data kurang dari 4 maka tidak diproses.
-            if (pjg_data >= minLength) {
+		if (e.keyCode == 13) {
+			var pjg_data = txtBox.value.length;
+			// Jika panjang data kurang dari 4 maka tidak diproses.
+			if (pjg_data >= minLength) {
 				// tombol enter akan men-trigger fungsi onClick
 				document.getElementById(tagID).click();
 			} else {
 				alert("Data minimal " + minLength + " karakter");
 			}
-        }
-    }
+		}
+	}
 
-/* Fungsi untuk reset Color Object. */
-function resetColor() {
+	/* Fungsi untuk reset Color Object. */
+	function resetColor() {
 		changeColorKiri('#faf7f2');
 		changeColor('#faf7f2');
 		changeColorAtas('#faf7f2');
 	}
 
-/* ================= Ubah Preview Color ========================== */
-	
+	/* ================= Ubah Preview Color ========================== */
+
 	/* Fungsi untuk mengganti Warna Preview Color pada Object Kiri */
 	function previewColorKiri(color, nama, kode) {
 		document.getElementById('focus_color_kiri').style.backgroundColor = color;
 		document.getElementById('nama_color_kiri').innerHTML = nama;
 		document.getElementById('kode_color_kiri').innerHTML = kode;
 	}
-	
+
 	/* Fungsi untuk mengganti Warna Preview Color pada Object Atap */
 	function previewColorAtap(color, nama, kode) {
 		document.getElementById('focus_color_atap').style.backgroundColor = color;
 		document.getElementById('nama_color_atap').innerHTML = nama;
 		document.getElementById('kode_color_atap').innerHTML = kode;
 	}
-	
+
 	/* Fungsi untuk mengganti Warna Preview Color pada Object Atap */
 	function previewColorKanan(color, nama, kode) {
 		document.getElementById('focus_color_kanan').style.backgroundColor = color;
 		document.getElementById('nama_color_kanan').innerHTML = nama;
 		document.getElementById('kode_color_kanan').innerHTML = kode;
 	}
-	
-/* ================= End of Ubah Preview Color ====================== */
+
+	/* ================= End of Ubah Preview Color ====================== */
 
 	/* Fungsi Test2 untuk ambil value dari combobox dan menampilkan pada Dialog Alert */
 	function returnValue(element) {
 		var option_user_selection = element.options[element.selectedIndex].text;
 		if (option_user_selection == 'ParagonPremium') {
 			//fade('img_paragon_prem');
-			document.getElementById('img_paragon').style.display='none';	
-			document.getElementById('img_paragon_prem').style.display='block';	
+			document.getElementById('img_paragon').style.display = 'none';
+			document.getElementById('img_paragon_prem').style.display = 'block';
 		} else if (option_user_selection == 'Paragon') {
 			//fade('img_paragon');
-			document.getElementById('img_paragon').style.display='block';	
-			document.getElementById('img_paragon_prem').style.display='none';	
+			document.getElementById('img_paragon').style.display = 'block';
+			document.getElementById('img_paragon_prem').style.display = 'none';
 		}
-		
+
 		return option_user_selection;
 	}
-	
+
 	/* Fungsi untuk mengganti Warna Background pada tag <SELECT> */
 	function changeBG(color) {
 		document.getElementById('select').style.backgroundColor = color;
@@ -109,355 +337,166 @@ function resetColor() {
 	/* Fungsi untuk membuat visible-invisible pada form Tambah Warna */
 	function visible(isVisible) {
 		if (isVisible == 'TRUE') {
-			document.getElementById('add_form').style.display='block';	
-			document.getElementById('add_btn').style.display='none';
-			document.getElementById('batal_btn').style.display='block';
+			document.getElementById('add_form').style.display = 'block';
+			document.getElementById('add_btn').style.display = 'none';
+			document.getElementById('batal_btn').style.display = 'block';
 		} else if (isVisible == 'FALSE') {
-			document.getElementById('add_form').style.display='none';
-			document.getElementById('batal_btn').style.display='none';
-			document.getElementById('add_btn').style.display='block';
+			document.getElementById('add_form').style.display = 'none';
+			document.getElementById('batal_btn').style.display = 'none';
+			document.getElementById('add_btn').style.display = 'block';
 		}
-		
+
 	}
 
 	// create the XMLHttpRequest object, according browser
 	function get_XmlHttp() {
-	  // create the variable that will contain the instance of the XMLHttpRequest object (initially with null value)
-	  var xmlHttp = null;
+		// create the variable that will contain the instance of the XMLHttpRequest object (initially with null value)
+		var xmlHttp = null;
 
-	  if(window.XMLHttpRequest) {		// for Forefox, IE7+, Opera, Safari, ...
-	    xmlHttp = new XMLHttpRequest();
-	  }
-	  else if(window.ActiveXObject) {	// for Internet Explorer 5 or 6
-	    xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
-	  }
+		if (window.XMLHttpRequest) { // for Forefox, IE7+, Opera, Safari, ...
+			xmlHttp = new XMLHttpRequest();
+		} else if (window.ActiveXObject) { // for Internet Explorer 5 or 6
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
 
-	  return xmlHttp;
+		return xmlHttp;
 	}
 
 	// sends data to a php file, via POST, and displays the received answer
 	function ajaxrequest(php_file, tagID, idColor) {
-	  var request = get_XmlHttp();		// call the function for the XMLHttpRequest instance
+		var request = get_XmlHttp(); // call the function for the XMLHttpRequest instance
 
-	  // create pairs index=value with data that must be sent to server
-	  var  the_data = 'data=' + idColor; //document.getElementById('txt2').innerHTML;
+		// create pairs index=value with data that must be sent to server
+		var the_data = 'data=' + idColor; //document.getElementById('txt2').innerHTML;
 
-	  request.open("POST", php_file, true);			// set the request
+		request.open("POST", php_file, true); // set the request
 
-	  // adds  a header to tell the PHP script to recognize the data as is sent via POST
-	  request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	  request.send(the_data);		// calls the send() method with datas as parameter
+		// adds  a header to tell the PHP script to recognize the data as is sent via POST
+		request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		request.send(the_data); // calls the send() method with datas as parameter
 
-	  // Check request status
-	  // If the response is received completely, will be transferred to the HTML tag with tagID
-	  request.onreadystatechange = function() {
-	    if (request.readyState == 4) {
-	      document.getElementById(tagID).innerHTML = request.responseText;
-	    }
-	  }
+		// Check request status
+		// If the response is received completely, will be transferred to the HTML tag with tagID
+		request.onreadystatechange = function () {
+			if (request.readyState == 4) {
+				document.getElementById(tagID).innerHTML = request.responseText;
+			}
+		}
 	}
 </script>
-<style>
-
-	.color_container {
-		width:450px;
-		height:150px;
-		overflow:auto;
-	}
-	
-	.color_preview {
-		background-color:white;
-		height:280px;
-		width:380px;
-		border:1px gray solid;
-	}
-	
-	.color_select {
-		border:1px #f2f2f2 solid;
-		height:50px;
-		width:50px;
-		float:left;
-	}
-	
-	div.color_selector {
-		/*bakcground-color:#bde3a6;*/
-		background-color:#faf7f2; 
-		padding:10px 10px 10px 10px; 
-		width:443px; 
-		margin-bottom:15px; 
-		height:230px;
-		border:2px #e2e2e2 solid;
-	}
-	
-	div.nomor_obyek {
-		float:left; 
-		margin-right:10px; 
-		height:auto;
-	}
-.style1 {
-	font-size: 36px;
-	color: #0000FF;
-	font-weight: bold;
-}
-.style2 {font-size: 18px}
-.style4 {color: #FF6666}
-body {
-	background-color: #FFFFCC;
-}
-.style5 {
-	font-size: 18px;
-	color: #666666;
-	font-weight: bold;
-	font-family: Georgia, "Times New Roman", Times, serif;
-}
-.style6 {color: #666666}
-.style8 {color: #666666; font-family: Georgia, "Times New Roman", Times, serif; }
-.style9 {
-	color: #FF3333;
-	font-weight: bold;
-	font-size: 14px;
-}
-</style>
-</head>
-<body onload="browser_detector();">
-<div style="float:left;">
-	<h1 class='style8'>SIMULASI PENGECATAN KAMAR TIDUR</h1>
-	<div id="title"> </div>
-	<div style="float:left;" class="podbar" id="rumah">
-		<div class="painted_object"><img src="Penta%20Prima%20_%20Virtual%20Painter_files/room.png"></div>
-		<div class="painted_object"><img id="pic_lantai" src="Penta%20Prima%20_%20Virtual%20Painter_files/lantai.htm"></div>
-		<div class="painted_object"><img id="pic_kanan" src="Penta%20Prima%20_%20Virtual%20Painter_files/dinding_kanan.png" onload="getPixelsKanan(this)"></div>
-
-<div style="margin-top:400px;"> </div>
-	</div>
-	
-	<div style="float:right; z-index:1; position:absolute; left:700px; bottom:0px; top:70px; border:2 px">
-	  <div style="margin-bottom:5px; color:#faf7f2;  background-repeat: no-repeat; background-position: left center; ">
-			<label class="title">&nbsp; &nbsp; &nbsp;
-<!--			<div align="left"><span class="style5">Simulasi Warna - Kamar Tidur </span></div>   -->
-			<span class="style8">
-			</label>
-  	  </span><span class="style6">	        </span>
-	  </div>
-
-	  <!-- ######### Pilih Warna Kanan ########3 -->
-		<div class="color_selector">
-			<div class="nomor_obyek style1 style2 style4">PILIHAN WARNA</div>
-			<div>
-				<div id="result_kanan">
-		<div>
-			<table style="width:500px;" cellpadding="0" cellspacing="0">
-			<tbody><tr><td width="50%">
-				<div id="content_color">
-					<div id="focus_color_kanan" class="preview_color"></div>
-					<div id="nama_color_kanan" class="font16"></div>
-					<div id="kode_color_kanan"></div>
-				</div>
-				</td>
-				<td>
-					<div style="padding-bottom:10px;"><br>
-						<table border="0" cellpadding="0" cellspacing="0">
-							<tbody><tr>
-																<td>&nbsp;</td>
-																<td>&nbsp;<div id="btn_cari_kanan" class="button_orange btn_cari" onclick="ajaxrequest('color_search_kanan_D.php', 'search_result_kanan', searchColor('cari_kanan'));">Cari</div></td>
-							</tr>
-						</tbody></table>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<div id="search_result_kanan">
-						
-					</div>
-				</td>
-			</tr>
-			</tbody></table>
-		</div>
-		<div class="color_container">	
-			<div class="color_select" style="background-color:#faf7f2;" onclick="changeColor('#faf7f2'); previewColorKanan('#faf7f2', 'Clasic white', 'P 309');" title="Clasic white"></div>
-  			<div class="color_select" style="background-color:#fffedf;" onclick="changeColor('#fffedf'); previewColorKanan('#fffedf', 'Lily white', 'P 306');" title="Lily white"></div>
-  			<div class="color_select" style="background-color:#fff6d9;" onclick="changeColor('#fff6d9'); previewColorKanan('#fff6d9', 'Barley white', 'P 305');" title="Barley white"></div>
-  			<div class="color_select" style="background-color:#fae8d0;" onclick="changeColor('#fae8d0'); previewColorKanan('#fae8d0', 'Rose white', 'P 304');" title="Rose white"></div>
-  			<div class="color_select" style="background-color:#e9d8a4;" onclick="changeColor('#e9d8a4'); previewColorKanan('#e9d8a4', 'Lemon Drop', 'P 350');" title="Lemon Drop"></div>
-  			<div class="color_select" style="background-color:#c6c9f2;" onclick="changeColor('#c6c9f2'); previewColorKanan('#c6c9f2', 'Igloo', '50016');" title="Igloo"></div>
-  			<div class="color_select" style="background-color:#cdd1dd;" onclick="changeColor('#cdd1dd'); previewColorKanan('#cdd1dd', 'Light Grey', 'P 369');" title="Light Grey"></div>
-  			<div class="color_select" style="background-color:#b7ab9b;" onclick="changeColor('#b7ab9b'); previewColorKanan('#b7ab9b', 'Magnolia', 'P 312');" title="Magnolia"></div>
-  			<div class="color_select" style="background-color:#838383;" onclick="changeColor('#838383'); previewColorKanan('#838383', 'Mist Grey', 'P 321');" title="Mist Grey"></div>
-  			<div class="color_select" style="background-color:#4b3a44;" onclick="changeColor('#4b3a44'); previewColorKanan('#4b3a44', 'Chestnut Brown', 'P 348');" title="Chestnut Brown"></div>
-  			<div class="color_select" style="background-color:#f4f9fd;" onclick="changeColor('#f4f9fd'); previewColorKanan('#f4f9fd', 'Metro White', 'P 300');" title="Metro White"></div>
-  			<div class="color_select" style="background-color:#a4b5af;" onclick="changeColor('#a4b5af'); previewColorKanan('#a4b5af', 'Crystal Blue', 'P 352');" title="Crystal Blue"></div>
-  			<div class="color_select" style="background-color:#e8d7c7;" onclick="changeColor('#e8d7c7'); previewColorKanan('#e8d7c7', 'Orchid white', 'P 303');" title="Orchid white"></div>
-  			<div class="color_select" style="background-color:#e7e6d1;" onclick="changeColor('#e7e6d1'); previewColorKanan('#e7e6d1', 'Bluebell White', 'P 301');" title="Bluebell White"></div>
-  			<div class="color_select" style="background-color:#354581;" onclick="changeColor('#354581'); previewColorKanan('#354581', 'Benton Harbor', '54004');" title="Benton Harbor"></div>
-  			<div class="color_select" style="background-color:#ffdbb9;" onclick="changeColor('#ffdbb9'); previewColorKanan('#ffdbb9', 'Peach', '31000');" title="Peach"></div>
-  			<div class="color_select" style="background-color:#c6a18e;" onclick="changeColor('#c6a18e'); previewColorKanan('#c6a18e', 'Peach Pink', 'P 324');" title="Peach Pink"></div>
-  			<div class="color_select" style="background-color:#c96357;" onclick="changeColor('#c96357'); previewColorKanan('#c96357', 'Coral Pink', 'P 310');" title="Coral Pink"></div>
-  			<div class="color_select" style="background-color:#a33929;" onclick="changeColor('#a33929'); previewColorKanan('#a33929', 'Poppy', 'P 322');" title="Poppy"></div>
-  			<div class="color_select" style="background-color:#792622;" onclick="changeColor('#792622'); previewColorKanan('#792622', 'Coral Red', 'P 313');" title="Coral Red"></div>
-  			<div class="color_select" style="background-color:#fde9ac;" onclick="changeColor('#fde9ac'); previewColorKanan('#fde9ac', 'Light House Point', '20001');" title="Light House Point"></div>
-  			<div class="color_select" style="background-color:#f9dfa4;" onclick="changeColor('#f9dfa4'); previewColorKanan('#f9dfa4', 'Golden Apricot', '11007');" title="Golden Apricot"></div>
-  			<div class="color_select" style="background-color:#e88c63;" onclick="changeColor('#e88c63'); previewColorKanan('#e88c63', 'Istambul', '33004');" title="Istambul"></div>
-  			<div class="color_select" style="background-color:#d35f2c;" onclick="changeColor('#d35f2c'); previewColorKanan('#d35f2c', 'Orange Yellow', '34002');" title="Orange Yellow"></div>
-  			<div class="color_select" style="background-color:#f3dd49;" onclick="changeColor('#f3dd49'); previewColorKanan('#f3dd49', 'Canary Yellow', '25002');" title="Canary Yellow"></div>
-  			<div class="color_select" style="background-color:#85bc95;" onclick="changeColor('#85bc95'); previewColorKanan('#85bc95', 'Fresh Green', 'P 320');" title="Fresh Green"></div>
-  			<div class="color_select" style="background-color:#66ad9b;" onclick="changeColor('#66ad9b'); previewColorKanan('#66ad9b', 'Turquoise', 'P 377');" title="Turquoise"></div>
-  			<div class="color_select" style="background-color:#2c8394;" onclick="changeColor('#2c8394'); previewColorKanan('#2c8394', 'Aqua Blue', '64001');" title="Aqua Blue"></div>
-  			<div class="color_select" style="background-color:#195182;" onclick="changeColor('#195182'); previewColorKanan('#195182', 'Romantic Blue', '54003');" title="Romantic Blue"></div>
-  			<div class="color_select" style="background-color:#17231f;" onclick="changeColor('#17231f'); previewColorKanan('#17231f', 'Forest Green', '68000');" title="Forest Green"></div>
-  			<div class="color_select" style="background-color:#a1babf;" onclick="changeColor('#a1babf'); previewColorKanan('#a1babf', 'Sky Blue', 'P 327');" title="Sky Blue"></div>
-  			<div class="color_select" style="background-color:#9bc3cb;" onclick="changeColor('#9bc3cb'); previewColorKanan('#9bc3cb', 'Ice Blue', 'P 370');" title="Ice Blue"></div>
-  			<div class="color_select" style="background-color:#6c7b80;" onclick="changeColor('#6c7b80'); previewColorKanan('#6c7b80', 'Lido', 'P 374');" title="Lido"></div>
-  			<div class="color_select" style="background-color:#6c3d5d;" onclick="changeColor('#6c3d5d'); previewColorKanan('#6c3d5d', 'Antique', '47001');" title="Antique"></div>
-  			<div class="color_select" style="background-color:#fcf9e6;" onclick="changeColor('#fcf9e6'); previewColorKanan('#fcf9e6', 'Brilliant White', 'P 329');" title="Brilliant White"></div>
-  			<div class="color_select" style="background-color:#e8d0e6;" onclick="changeColor('#e8d0e6'); previewColorKanan('#e8d0e6', 'Rose Garden', '40011');" title="Rose Garden"></div>
-  			<div class="color_select" style="background-color:#f9cebe;" onclick="changeColor('#f9cebe'); previewColorKanan('#f9cebe', 'Peach Dust', 'P 353');" title="Peach Dust"></div>
-  			<div class="color_select" style="background-color:#e48768;" onclick="changeColor('#e48768'); previewColorKanan('#e48768', 'Wild Rose', '42001');" title="Wild Rose"></div>
-  			<div class="color_select" style="background-color:#e06440;" onclick="changeColor('#e06440'); previewColorKanan('#e06440', 'Cinnamon Spice', '44004');" title="Cinnamon Spice"></div>
-  			<div class="color_select" style="background-color:#c6240d;" onclick="changeColor('#c6240d'); previewColorKanan('#c6240d', 'Sunrise', '46005');" title="Sunrise"></div>
-  			<div class="color_select" style="background-color:#fff3d9;" onclick="changeColor('#fff3d9'); previewColorKanan('#fff3d9', 'Candy Yellow', '30001');" title="Candy Yellow"></div>
-  			<div class="color_select" style="background-color:#fff2cd;" onclick="changeColor('#fff2cd'); previewColorKanan('#fff2cd', 'Currier Cream', '10012');" title="Currier Cream"></div>
-  			<div class="color_select" style="background-color:#f4e8b4;" onclick="changeColor('#f4e8b4'); previewColorKanan('#f4e8b4', 'Apple White', 'P 302');" title="Apple White"></div>
-  			<div class="color_select" style="background-color:#e3d284;" onclick="changeColor('#e3d284'); previewColorKanan('#e3d284', 'Antique White', 'P 332');" title="Antique White"></div>
-  			<div class="color_select" style="background-color:#c2a557;" onclick="changeColor('#c2a557'); previewColorKanan('#c2a557', 'Cream', 'P 382');" title="Cream"></div>
-  			<div class="color_select" style="background-color:#f5e3c3;" onclick="changeColor('#f5e3c3'); previewColorKanan('#f5e3c3', 'Golden Wheat', '2044P');" title="Golden Wheat"></div>
-
-  		</div>
-  </div>
-			</div>
-		</div>
-		
-		<div style="background-color:#FFFFCC; padding:10px 10px 10px 10px; width:452px; font:normal 9pt arial;">
-			<label style="color:white; font-size:14px;">
-			<div align="center"><img src="Penta Prima _ Virtual Painter_files/Pentalex.png" width="400" height="100" /></div>
-			</label>
-			<p><strong>PENTALEX (7700 - SERI)<br />
-            </strong><em>Acrylic Emulsion Paint for Interior &amp; Exterior</em><br />
-            <br />
-Cat tembok yang terbuat dari bahan dasar resin acrylic dasar air,   pigment, dan additive-additive pilihan, tidak berbau, mudah diaplikasi,   dan cepat kering. Lapisan keringnya tidak mudah retak, daya lekatnya   sangat baik dan tidak mudah luntur bila terkena air, menjadikan cat ini   bisa digunakan untuk pelindung permukaan dinding bagian dalam maupun   luar ruangan. </p>
-<br/>
-<p>* Warna-warna mendekati warna aslinya, cahaya dan bentuk permukaan mempengaruhi hasil akhir. </p>
-
-	  </div>
- 
- </div>
-
 
 <script type="text/javascript">
 	// Fungsi untuk mengubah warna dari warna asli ke warna RGB.
-			function HexToRGB(Hex) {
-				var Long = parseInt(Hex.replace(/^#/, ""), 16);
-				return {
-					R: (Long >>> 16) & 0xff,
-					G: (Long >>> 8) & 0xff,
-					B: Long & 0xff
-				};
-			}
-			
+	function HexToRGB(Hex) {
+		var Long = parseInt(Hex.replace(/^#/, ""), 16);
+		return {
+			R: (Long >>> 16) & 0xff,
+			G: (Long >>> 8) & 0xff,
+			B: Long & 0xff
+		};
+	}
+
 	// ###################### Image KANAN #########################		
-			var objek = document.getElementById("pic_kanan");
-			var canvas = document.createElement("canvas");
-			var ctx = canvas.getContext("2d");
-			var originalPixels = null;
-			var currentPixels = null;
-			
-			function changeColor(selectedColor) {
-				if(!originalPixels) return; // Check if image has loaded
-				var newColor = HexToRGB(selectedColor);
-				
-				for(var I = 0, L = originalPixels.data.length; I < L; I += 4) {
-					if(currentPixels.data[I + 3] > 0) {
-						currentPixels.data[I] = originalPixels.data[I] / 255 * newColor.R;
-						currentPixels.data[I + 1] = originalPixels.data[I + 1] / 255 * newColor.G;
-						currentPixels.data[I + 2] = originalPixels.data[I + 2] / 255 * newColor.B;
-					}
-				}
-				
-				ctx.putImageData(currentPixels, 0, 0);
-				objek.src = canvas.toDataURL("image/png");
+	var objek = document.getElementById("pic_kanan");
+	var canvas = document.createElement("canvas");
+	var ctx = canvas.getContext("2d");
+	var originalPixels = null;
+	var currentPixels = null;
+
+	function changeColor(selectedColor) {
+		if (!originalPixels) return; // Check if image has loaded
+		var newColor = HexToRGB(selectedColor);
+
+		for (var I = 0, L = originalPixels.data.length; I < L; I += 4) {
+			if (currentPixels.data[I + 3] > 0) {
+				currentPixels.data[I] = originalPixels.data[I] / 255 * newColor.R;
+				currentPixels.data[I + 1] = originalPixels.data[I + 1] / 255 * newColor.G;
+				currentPixels.data[I + 2] = originalPixels.data[I + 2] / 255 * newColor.B;
 			}
-			
-			function getPixelsKanan(img) {
-				canvas.width = img.width;
-				canvas.height = img.height;
-				
-				ctx.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, img.width, img.height);
-				originalPixels = ctx.getImageData(0, 0, img.width, img.height);
-				currentPixels = ctx.getImageData(0, 0, img.width, img.height);
-				
-				img.onload = null;
-			}
-			
+		}
+
+		ctx.putImageData(currentPixels, 0, 0);
+		objek.src = canvas.toDataURL("image/png");
+	}
+
+	function getPixelsKanan(img) {
+		canvas.width = img.width;
+		canvas.height = img.height;
+
+		ctx.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, img.width, img.height);
+		originalPixels = ctx.getImageData(0, 0, img.width, img.height);
+		currentPixels = ctx.getImageData(0, 0, img.width, img.height);
+
+		img.onload = null;
+	}
+
 	// ###################### Image KIRI #########################
-			var objekKiri = document.getElementById("pic_kiri");
-			var canvasKiri = document.createElement("canvas");
-			var ctxKiri = canvasKiri.getContext("2d");
-			var originalPixelsKiri = null;
-			var currentPixelsKiri = null;
-			
-			function changeColorKiri(selectedColor) {
-				if(!originalPixelsKiri) return; // Check if image has loaded
-				var newColor = HexToRGB(selectedColor);
-				
-				for(var I = 0, L = originalPixelsKiri.data.length; I < L; I += 4) {
-					if(currentPixelsKiri.data[I + 3] > 0) {
-						currentPixelsKiri.data[I] = originalPixelsKiri.data[I] / 255 * newColor.R;
-						currentPixelsKiri.data[I + 1] = originalPixelsKiri.data[I + 1] / 255 * newColor.G;
-						currentPixelsKiri.data[I + 2] = originalPixelsKiri.data[I + 2] / 255 * newColor.B;
-					}
-				}
-				
-				ctxKiri.putImageData(currentPixelsKiri, 0, 0);
-				objekKiri.src = canvasKiri.toDataURL("image/png");
+	var objekKiri = document.getElementById("pic_kiri");
+	var canvasKiri = document.createElement("canvas");
+	var ctxKiri = canvasKiri.getContext("2d");
+	var originalPixelsKiri = null;
+	var currentPixelsKiri = null;
+
+	function changeColorKiri(selectedColor) {
+		if (!originalPixelsKiri) return; // Check if image has loaded
+		var newColor = HexToRGB(selectedColor);
+
+		for (var I = 0, L = originalPixelsKiri.data.length; I < L; I += 4) {
+			if (currentPixelsKiri.data[I + 3] > 0) {
+				currentPixelsKiri.data[I] = originalPixelsKiri.data[I] / 255 * newColor.R;
+				currentPixelsKiri.data[I + 1] = originalPixelsKiri.data[I + 1] / 255 * newColor.G;
+				currentPixelsKiri.data[I + 2] = originalPixelsKiri.data[I + 2] / 255 * newColor.B;
 			}
-			
-			function getPixelsKiri(img) {
-				canvasKiri.width = img.width;
-				canvasKiri.height = img.height;
-				
-				ctxKiri.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, img.width, img.height);
-				originalPixelsKiri = ctxKiri.getImageData(0, 0, img.width, img.height);
-				currentPixelsKiri = ctxKiri.getImageData(0, 0, img.width, img.height);
-				
-				img.onload = null;
-			}
-			
+		}
+
+		ctxKiri.putImageData(currentPixelsKiri, 0, 0);
+		objekKiri.src = canvasKiri.toDataURL("image/png");
+	}
+
+	function getPixelsKiri(img) {
+		canvasKiri.width = img.width;
+		canvasKiri.height = img.height;
+
+		ctxKiri.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, img.width, img.height);
+		originalPixelsKiri = ctxKiri.getImageData(0, 0, img.width, img.height);
+		currentPixelsKiri = ctxKiri.getImageData(0, 0, img.width, img.height);
+
+		img.onload = null;
+	}
+
 	// ###################### Image ATAS #########################
-			var objekAtas = document.getElementById("pic_atap");
-			var canvasAtas = document.createElement("canvas");
-			var ctxAtas = canvasAtas.getContext("2d");
-			var originalPixelsAtas = null;
-			var currentPixelsAtas = null;
-			
-			function changeColorAtas(selectedColor) {
-				if(!originalPixelsAtas) return; // Check if image has loaded
-				var newColor = HexToRGB(selectedColor);
-				
-				for(var I = 0, L = originalPixelsAtas.data.length; I < L; I += 4) {
-					if(currentPixelsAtas.data[I + 3] > 0) {
-						currentPixelsAtas.data[I] = originalPixelsAtas.data[I] / 255 * newColor.R;
-						currentPixelsAtas.data[I + 1] = originalPixelsAtas.data[I + 1] / 255 * newColor.G;
-						currentPixelsAtas.data[I + 2] = originalPixelsAtas.data[I + 2] / 255 * newColor.B;
-					}
-				}
-				
-				ctxAtas.putImageData(currentPixelsAtas, 0, 0);
-				objekAtas.src = canvasAtas.toDataURL("image/png");
+	var objekAtas = document.getElementById("pic_atap");
+	var canvasAtas = document.createElement("canvas");
+	var ctxAtas = canvasAtas.getContext("2d");
+	var originalPixelsAtas = null;
+	var currentPixelsAtas = null;
+
+	function changeColorAtas(selectedColor) {
+		if (!originalPixelsAtas) return; // Check if image has loaded
+		var newColor = HexToRGB(selectedColor);
+
+		for (var I = 0, L = originalPixelsAtas.data.length; I < L; I += 4) {
+			if (currentPixelsAtas.data[I + 3] > 0) {
+				currentPixelsAtas.data[I] = originalPixelsAtas.data[I] / 255 * newColor.R;
+				currentPixelsAtas.data[I + 1] = originalPixelsAtas.data[I + 1] / 255 * newColor.G;
+				currentPixelsAtas.data[I + 2] = originalPixelsAtas.data[I + 2] / 255 * newColor.B;
 			}
-			
-			function getPixelsAtas(img) {
-				canvasAtas.width = img.width;
-				canvasAtas.height = img.height;
-				
-				ctxAtas.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, img.width, img.height);
-				originalPixelsAtas = ctxAtas.getImageData(0, 0, img.width, img.height);
-				currentPixelsAtas = ctxAtas.getImageData(0, 0, img.width, img.height);
-				
-				img.onload = null;
-			}
+		}
+
+		ctxAtas.putImageData(currentPixelsAtas, 0, 0);
+		objekAtas.src = canvasAtas.toDataURL("image/png");
+	}
+
+	function getPixelsAtas(img) {
+		canvasAtas.width = img.width;
+		canvasAtas.height = img.height;
+
+		ctxAtas.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, img.width, img.height);
+		originalPixelsAtas = ctxAtas.getImageData(0, 0, img.width, img.height);
+		currentPixelsAtas = ctxAtas.getImageData(0, 0, img.width, img.height);
+
+		img.onload = null;
+	}
 </script>
 
-  
-</div>
-<p>&nbsp;</p>
-</body></html>
+</html>
