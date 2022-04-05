@@ -30,16 +30,16 @@ div.color_select:active{
 	div.col-description{
 		margin-top: -200px;
 	}
-	div.col-description-second{
-		margin-top: -200px;
-	}
 }
 @media only screen and (max-width: 407px) {
 	div.col-description{
 		margin-top: -320px;
 	}
 	div.col-description-second{
-		margin-top: -280px;
+		margin-top: 40px;
+	}
+	.card-color-palet{
+		height: 300px;
 	}
 }
 
@@ -47,8 +47,11 @@ div.color_select:active{
 	div.col-description{
 		margin-top: -800px;
 	}
-	div.col-description-second{
+	/* div.col-description-second{
 		margin-top: -630px;
+	} */
+	.card-color-palet{
+		height: 300px;
 	}
 }
 @media only screen and (min-width: 992px) {
@@ -56,7 +59,10 @@ div.color_select:active{
 		margin-top: -300px;
 	}
 	div.col-description-second{
-		margin-top: -210px;
+		margin-top: -15px;
+	}
+	.card-color-palet{
+		height: 300px;
 	}
 }
 @media only screen and (min-width: 1200px) {
@@ -65,5 +71,8 @@ div.color_select:active{
 	}
 	div.col-description-second{
 		margin-top: 10px;
+	}
+	.card-color-palet{
+		height: 400px;
 	}
 }
