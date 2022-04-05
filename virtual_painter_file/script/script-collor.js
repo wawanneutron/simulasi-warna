@@ -1,8 +1,8 @@
 /* Fungsi untuk mengganti Warna pada preview 
-function changeColor(color, title_color) {
-	document.getElementById('preview').style.backgroundColor = color;
-	document.getElementById('title').innerHTML = title_color;
-} */
+	function changeColor(color, title_color) {
+		document.getElementById('preview').style.backgroundColor = color;
+		document.getElementById('title').innerHTML = title_color;
+	} */
 
 /* Fungsi test  */
 function test() {
@@ -145,13 +145,23 @@ function ajaxrequest(php_file, tagID, idColor) {
 	}
 }
 
+
 // Fungsi untuk mengubah warna dari warna asli ke warna RGB.
-function HexToRGB(Hex) {
+/*function HexToRGB(Hex) {
 	var Long = parseInt(Hex.replace(/^#/, ""), 16);
 	return {
 		R: (Long >>> 16) & 0xff,
 		G: (Long >>> 8) & 0xff,
 		B: Long & 0xff
+	};
+}*/
+
+function HexToRGB(Hex) {
+	/*var Long = parseInt(Hex.replace(/^#/, ""), 16);*/
+	return {
+		R: parseInt(Hex.substring(0, 3), 10),
+		G: parseInt(Hex.substring(3, 6), 10),
+		B: parseInt(Hex.substring(6, 9), 10)
 	};
 }
 
