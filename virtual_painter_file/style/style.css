@@ -60,6 +60,15 @@ div.color_select:active{
 	height: 1px;
 	background: #27272a;
 }
+
+div.footer_bottom{
+	position: relative;
+}
+div.img-footer{
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
 /* end social */
 
 
@@ -68,6 +77,9 @@ div.color_select:active{
 @media only screen and (max-width: 768px) {
 	div.col-description{
 		margin-top: -200px;
+	}
+	.footer_v1 .footer_bottom .social_box{
+		margin-bottom: 90px;
 	}
 }
 @media only screen and (max-width: 407px) {
@@ -91,6 +103,9 @@ div.color_select:active{
 	} */
 	.card-color-palet{
 		height: 300px;
+	}
+	.footer_v1 .footer_bottom .social_box{
+		margin-bottom: 70px;
 	}
 }
 @media only screen and (min-width: 992px) {
