@@ -2,7 +2,7 @@
 
 ## Link
 
-[Demo Live](https://virtual-paint.netlify.app/)
+[Demo Live](https://www.pentaprima.co.id/Virtual-Painter/35/page)
 
 ## desktop
 
